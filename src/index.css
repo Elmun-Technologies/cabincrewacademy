@@ -5,6 +5,9 @@
   --color-etihad-gold: #bd8b13;
   --color-etihad-light: #f5f7fa;
   --color-etihad-dark: #001a3d;
+  --color-etihad-sky: #4a90e2;
+  --color-etihad-sunset: #ff7e5f;
+  --color-etihad-night: #0a1a3a;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
@@ -30,6 +33,40 @@
     background: linear-gradient(135deg, #002f6c 0%, #004080 50%, #001a3d 100%);
   }
 
+  .gradient-sky {
+    background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 40%, #60a5fa 100%);
+  }
+
+  .gradient-sunset {
+    background: linear-gradient(135deg, #002f6c 0%, #5b3a8c 40%, #ff7e5f 100%);
+  }
+
+  .gradient-cockpit {
+    background:
+      radial-gradient(ellipse at top, rgba(189, 139, 19, 0.15) 0%, transparent 60%),
+      linear-gradient(135deg, #001a3d 0%, #002f6c 50%, #001a3d 100%);
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, #bd8b13 0%, #d4a017 50%, #f0c244 100%);
+  }
+
+  .gradient-fire {
+    background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
+  }
+
+  .gradient-ocean {
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  }
+
+  .gradient-emerald {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  .gradient-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  }
+
   .text-gradient-gold {
     background: linear-gradient(90deg, #bd8b13, #d4a017);
     -webkit-background-clip: text;
@@ -37,17 +74,102 @@
     background-clip: text;
   }
 
+  .text-gradient-sky {
+    background: linear-gradient(90deg, #60a5fa, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .card-hover {
-    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .card-glow {
+    box-shadow: 0 0 0 1px rgba(189, 139, 19, 0.2), 0 8px 30px rgba(189, 139, 19, 0.15);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-dark {
+    background: rgba(0, 26, 61, 0.45);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .streak-fire {
     animation: pulse-fire 1.5s ease-in-out infinite;
   }
 
-  @keyframes pulse-fire {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+  .float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-fast {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .float-plane {
+    animation: float-plane 12s ease-in-out infinite;
+  }
+
+  .pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 2.4s infinite;
+  }
+
+  .badge-glow {
+    animation: badge-glow 2.5s ease-in-out infinite;
+  }
+
+  .slide-in-up {
+    animation: slide-in-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .slide-in-left {
+    animation: slide-in-left 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .scale-in {
+    animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .delay-1 { animation-delay: 0.05s; }
+  .delay-2 { animation-delay: 0.1s; }
+  .delay-3 { animation-delay: 0.18s; }
+  .delay-4 { animation-delay: 0.26s; }
+  .delay-5 { animation-delay: 0.34s; }
+  .delay-6 { animation-delay: 0.42s; }
+
+  .rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .clouds-bg {
+    background-image:
+      radial-gradient(120px 50px at 20% 30%, rgba(255, 255, 255, 0.18), transparent 70%),
+      radial-gradient(160px 60px at 80% 50%, rgba(255, 255, 255, 0.14), transparent 70%),
+      radial-gradient(100px 40px at 40% 80%, rgba(255, 255, 255, 0.12), transparent 70%),
+      radial-gradient(140px 60px at 70% 20%, rgba(255, 255, 255, 0.1), transparent 70%);
+    background-size: 200% 100%;
+    animation: drift 30s linear infinite;
   }
 
   .journey-path {
@@ -59,4 +181,77 @@
       #cbd5e1 16px
     );
   }
+
+  .ring-progress {
+    transform: rotate(-90deg);
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hover-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 28px -10px rgba(0, 47, 108, 0.35);
+  }
+
+  .runway-line {
+    background-image: repeating-linear-gradient(90deg, #ffffff 0 24px, transparent 24px 48px);
+  }
+}
+
+@keyframes pulse-fire {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-plane {
+  0% { transform: translate(-10%, 0) rotate(-4deg); }
+  50% { transform: translate(10%, -8px) rotate(2deg); }
+  100% { transform: translate(-10%, 0) rotate(-4deg); }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(189, 139, 19, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(189, 139, 19, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(189, 139, 19, 0); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+@keyframes badge-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(189, 139, 19, 0.4); }
+  50% { box-shadow: 0 0 24px rgba(189, 139, 19, 0.8); }
+}
+
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes drift {
+  from { background-position: 0% 0%; }
+  to { background-position: 200% 0%; }
 }
