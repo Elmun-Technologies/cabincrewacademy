@@ -294,8 +294,19 @@ Yangi UI matn qo'shganda **ikkala locale** faylini yangilang. JSON sintaksisini 
 
 ---
 
-## Deploy (Netlify)
+## Deploy
 
+### Asosiy: GitHub Pages (bepul, limitsiz)
+
+GitHub Actions orqali har push'da avtomatik deploy:
+```
+.github/workflows/deploy.yml — npm ci + BASE_PATH=/cabincrewacademy/ npm run build
+404.html = index.html nusxasi (React Router uchun SPA fallback)
+URL: https://elmun-technologies.github.io/cabincrewacademy/
+```
+Birinchi safar: Settings → Pages → Source: GitHub Actions. Tafsilot: `.github/PAGES_SETUP.md`
+
+### Backup: Netlify
 ```
 Build: npm run build
 Publish: dist
