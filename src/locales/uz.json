@@ -334,15 +334,34 @@
     "tipBody": "Mikrofonga gapiring va ovozingizni eshiting — talaffuzni tuzatish uchun eng yaxshi usul"
   },
   "gamesPage": {
-    "subtitle": "Etihad bo'lajak xodimlari uchun cognitive testlar",
-    "memoryDesc": "Xotira: kartochkalarni juftlang",
-    "reactionDesc": "Reaksiya: rang o'zgarganda bosing",
-    "patternDesc": "Pattern: ketma-ketlikni topish",
-    "sjtDesc": "SJT: vaziyatga to'g'ri javob",
-    "playNow": "Hozir o'ynash",
+    "subtitle": "Etihad cognitive testlari simulyatori — har bir o'yin haqiqiy intervyu testiga mos",
+    "memoryDesc": "Qisqa muddatli xotirani sinash — havfsizlik elementlarini eslab qoling",
+    "reactionDesc": "Reaksiya tezligi — kabin ekipajining nazoratchilik tezligi",
+    "patternDesc": "Pattern recognition — ketma-ketliklarni tezda topish",
+    "sjtDesc": "Situational Judgment Test — to'g'ri qaror qabul qilish",
+    "playNow": "O'ynashni boshlash",
     "bestScore": "Eng yaxshi",
     "totalGames": "Jami o'yinlar",
-    "averageScore": "O'rtacha"
+    "averageScore": "O'rtacha",
+    "howToPlay": "Qanday o'ynash",
+    "whyMatters": "Nima uchun muhim?",
+    "skillTested": "Tekshiriladigan ko'nikma",
+    "memoryHowTo": "Kartalarni juftlang — har bir karta bossangiz ochiladi. Bir xil ikkita karta topsangiz ular ochiq qoladi. Maqsad — barchasini eng kam urinishda juftlash.",
+    "memoryWhy": "Borda safety procedure'lar, yo'lovchi nomlari va allergiyalarni eslab qolish kerak. Bu test xotira tezligini baholaydi.",
+    "memorySkill": "Qisqa muddatli xotira, vizual eslab qolish",
+    "reactionHowTo": "Qizil ekran ko'rinsa KUTING. Yashilga o'tganda DARHOL bosing. Erta bosish — qayta urinish. 200-300 ms — a'lo natija.",
+    "reactionWhy": "Aviakompaniya recruiterlari (Arctic Shores, HireVue) tez qaror qabul qilish ko'nikmasini sinaydi. Favqulodda vaziyatlarda har soniya muhim.",
+    "reactionSkill": "Reaksiya tezligi, e'tibor kontroli",
+    "patternHowTo": "Rangli emoji ketma-ketligi ko'rsatiladi. Eslab qoling, keyin xuddi shu tartibda bosing. Har rounded ketma-ketlik 1 ta uzunlikka oshadi.",
+    "patternWhy": "Pattern recognition — kabin protokollarini, safety drill'lar ketma-ketligini va xizmat rituallarini o'rganishda muhim.",
+    "patternSkill": "Pattern recognition, ish xotirasi (working memory)",
+    "sjtHowTo": "Real ish vaziyati beriladi. Eng yaxshi javobni tanlang. Har bir variant 0-10 ball oladi. \"Customer first + Team first\" mantra.",
+    "sjtWhy": "SJT — assessment day'ning eng muhim qismi. Etihad qadriyatlariga mos qaror qabul qilishni tekshiradi.",
+    "sjtSkill": "Qaror qabul qilish, professional etika, customer orientation",
+    "startGame": "O'yinni boshlash",
+    "closeInfo": "Yopish",
+    "yourScore": "Sizning ballingiz",
+    "tryAgain": "Yana urinish"
   },
   "journeyPage": {
     "subtitle": "13 bosqichli o'quv yo'li — phase 0 dan Etihad Ready ga qadar",
@@ -356,6 +375,37 @@
     "phaseLabel": "Phase",
     "duration": "{{min}} min",
     "reward": "+{{xp}} XP"
+  },
+  "study": {
+    "title": "90 KUNLIK YO'L",
+    "subtitle": "12 hafta — Foundation → Skills → Application",
+    "weekLabel": "Hafta",
+    "finalGoal": "Yakuniy maqsad",
+    "finalGoalDesc": "Hafta 12 oxiriga Etihad ariza berishga to'liq tayyor",
+    "theme": {
+      "foundation": "Asoslar",
+      "skills": "Ko'nikmalar",
+      "apply": "Ariza"
+    },
+    "milestone": {
+      "m1": "Asoslar tugadi — aviatsiya va Etihad bilim",
+      "m2": "Soft skills + Ingliz tili kuchli",
+      "m3": "Ariza tayyor — apply qiling!"
+    },
+    "goal": {
+      "w1": "Profil + aviatsiya asoslari",
+      "w2": "Etihad bilim + aviation terms",
+      "w3": "Grooming + customer service intro",
+      "w4": "English IPA boshlash — Month 1 yakun",
+      "w5": "Customer service deep + English",
+      "w6": "SEP xavfsizlik + English vocab",
+      "w7": "First Aid (CPR, choking) + English",
+      "w8": "Interview prep — Month 2 yakun",
+      "w9": "Mock interview + gamified tests",
+      "w10": "Assessment Day full prep",
+      "w11": "Documents + final mock",
+      "w12": "Final assessment — apply!"
+    }
   },
   "profilePage": {
     "subtitle": "Sizning Etihad sari yo'l xaritangiz",

@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { SectionHeader } from '@/components/ui/section-header'
 import { StatTile } from '@/components/ui/stat-tile'
 import { AnimatedNumber } from '@/components/ui/animated-number'
+import { StudyRoadmap } from '@/components/dashboard/StudyRoadmap'
 import { useAppStore } from '@/stores/app-store'
 import { phases } from '@/content/phases'
 import { getPhaseProgress, getNextLesson } from '@/lib/daily-plan'
@@ -287,6 +288,11 @@ export function DashboardPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ─── 90-day Roadmap ─────────────────────────────────── */}
+      <section className="slide-in-up delay-3">
+        <StudyRoadmap />
       </section>
 
       {/* ─── Cockpit Instruments ────────────────────────────── */}
