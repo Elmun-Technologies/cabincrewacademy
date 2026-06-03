@@ -281,6 +281,92 @@
     "chooseResponse": "Choose your response",
     "continue": "Continue"
   },
+  "page": {
+    "back": "Back",
+    "exploreMore": "Explore more",
+    "actions": "Actions",
+    "overview": "Overview",
+    "details": "Details",
+    "stats": "Stats",
+    "noData": "No data yet"
+  },
+  "assessmentPage": {
+    "hero": "Mock Assessment Day",
+    "subtitle": "Real-time simulation of Etihad assessment day",
+    "stepLabel": "Step",
+    "tipsTitle": "Tips",
+    "tip1": "Run a full mock once in real conditions — in business attire",
+    "tip2": "Give yourself an honest score after each step",
+    "tip3": "If you record video — review it and note weak spots",
+    "scoreLabel": "Your score",
+    "doneTitle": "Mock complete!",
+    "averageScore": "Average score",
+    "restart": "Start over",
+    "categories": "Categories"
+  },
+  "dailyPage": {
+    "subtitle": "Today's 2-hour flight plan",
+    "dayLabel": "Day",
+    "progressLabel": "Completed",
+    "totalBlocks": "Blocks",
+    "doneCount": "Done",
+    "remaining": "Remaining",
+    "minutes": "minutes",
+    "challengeTitle": "Daily Challenge",
+    "tipTitle": "Today's tip",
+    "tip1": "Solve the challenge first — it warms up your brain",
+    "tip2": "Rest 5 minutes after the lesson, then start English",
+    "tip3": "The final block — Flight Log — is the most important part"
+  },
+  "documentsPage": {
+    "subtitle": "CV, vault and application checklist",
+    "vaultDesc": "Keep all documents in one place",
+    "checklistDesc": "Etihad application steps",
+    "completedCount": "{{done}}/{{total}} ready",
+    "uploadHere": "Upload here",
+    "previewLabel": "Live preview"
+  },
+  "englishPage": {
+    "subtitle": "IPA, glossary, flashcards and speaking",
+    "totalWords": "Words",
+    "ipaCount": "IPA sounds",
+    "tipTitle": "Speaking Lab tip",
+    "tipBody": "Speak into the mic and listen back — the best way to fix pronunciation"
+  },
+  "gamesPage": {
+    "subtitle": "Cognitive tests for future Etihad crew",
+    "memoryDesc": "Memory: pair the cards",
+    "reactionDesc": "Reaction: tap when colour changes",
+    "patternDesc": "Pattern: find the sequence",
+    "sjtDesc": "SJT: respond correctly to situations",
+    "playNow": "Play now",
+    "bestScore": "Best",
+    "totalGames": "Total games",
+    "averageScore": "Average"
+  },
+  "journeyPage": {
+    "subtitle": "13-phase learning path — from phase 0 to Etihad Ready",
+    "totalPhases": "Phases",
+    "completedPhases": "Completed",
+    "currentPhase": "Current",
+    "lockedPhases": "Locked",
+    "phaseLabel": "Phase"
+  },
+  "lessonPage": {
+    "phaseLabel": "Phase",
+    "duration": "{{min}} min",
+    "reward": "+{{xp}} XP"
+  },
+  "profilePage": {
+    "subtitle": "Your road map to Etihad",
+    "memberSince": "Member since",
+    "longestStreak": "Longest streak",
+    "flightLogs": "Flight Logs",
+    "heightLabel": "Height",
+    "ageLabel": "Age",
+    "noBadges": "No badges yet — complete your first lesson!",
+    "recentLogs": "Recent entries"
+  },
   "sep": {
     "title": "SEP Drill",
     "step": "Step",

@@ -128,14 +128,50 @@ export const phase6: Phase = {
   lessons: [{
     id: 'firstaid-intro', titleKey: 'phases.6.title', type: 'text', xpReward: 50, durationMinutes: 25,
     content: { blocks: [
-      { type: 'heading', text: { uz: 'Birinchi yordam', en: 'First Aid' } },
+      { type: 'heading', text: { uz: 'Birinchi yordam — asoslari', en: 'First Aid — Basics' } },
+      { type: 'paragraph', text: { uz: 'Borda doctor yo\'q bo\'lsa, kabina ekipaji birinchi yordam ko\'rsatuvchi. ABCDE — primary survey usuli.', en: 'When no doctor is onboard, cabin crew are the first responders. Use ABCDE primary survey.' } },
       { type: 'list', items: [
-        { uz: 'CPR — yurak-qon tomir reanimatsiya', en: 'CPR — cardiopulmonary resuscitation' },
-        { uz: 'AED — avtomatik defibrilyator', en: 'AED — automated external defibrillator' },
-        { uz: 'Choking — bo\'g\'ilib qolish', en: 'Choking — Heimlich maneuver' },
-        { uz: 'Allergic reaction — allergik reaksiya', en: 'Allergic reaction' },
-        { uz: 'Fainting — hushidan ketish', en: 'Fainting/syncope' },
-        { uz: 'Medical kit — tibbiy sumka', en: 'Onboard medical kit' },
+        { uz: 'A — Airway (havo yo\'li ochiqmi?)', en: 'A — Airway (is it clear?)' },
+        { uz: 'B — Breathing (nafas olyaptimi?)', en: 'B — Breathing (rate & quality?)' },
+        { uz: 'C — Circulation (puls bormi?)', en: 'C — Circulation (pulse?)' },
+        { uz: 'D — Disability (hushyorlik darajasi)', en: 'D — Disability (consciousness)' },
+        { uz: 'E — Exposure (qo\'shimcha shikastlar)', en: 'E — Exposure (other injuries)' },
+      ]},
+    ]},
+  }, {
+    id: 'cpr-aed', titleKey: 'phases.6.title', type: 'text', xpReward: 75, durationMinutes: 30,
+    content: { blocks: [
+      { type: 'heading', text: { uz: 'CPR + AED — Yurakni qayta yo\'lga solish', en: 'CPR + AED — Cardiac Resuscitation' } },
+      { type: 'paragraph', text: { uz: 'Kattalar uchun: 30 ko\'krak siqish + 2 nafas berish. 100-120 bpm tezlikda. 5-6 cm chuqurlikda.', en: 'For adults: 30 chest compressions + 2 breaths. 100-120 bpm rate. 5-6 cm depth.' } },
+      { type: 'list', items: [
+        { uz: '1. Hushyorlikni tekshiring ("Eshityapsizmi?")', en: '1. Check responsiveness ("Can you hear me?")' },
+        { uz: '2. Yordam chaqiring + AED ni so\'rang', en: '2. Call for help + request AED' },
+        { uz: '3. Nafas + puls 10 soniya tekshiring', en: '3. Check breathing + pulse for 10 seconds' },
+        { uz: '4. CPR boshlang: 30:2 sikl, 100-120 bpm', en: '4. Start CPR: 30:2 cycle at 100-120 bpm' },
+        { uz: '5. AED tayyor bo\'lganda yopishtiring', en: '5. Attach AED pads when ready' },
+        { uz: '6. AED ko\'rsatmasiga rioya qiling', en: '6. Follow AED voice prompts' },
+      ]},
+      { type: 'quiz', quiz: { id: 'cpr-q', passingScore: 80, questions: [
+        { id: 'cpr1', question: { uz: 'CPR tezligi (bpm)?', en: 'CPR rate (bpm)?' },
+          options: [{ uz: '60-80', en: '60-80' }, { uz: '100-120', en: '100-120' }, { uz: '140-160', en: '140-160' }, { uz: '180-200', en: '180-200' }], correctIndex: 1 },
+        { id: 'cpr2', question: { uz: 'Ko\'krak siqish chuqurligi (kattalar)?', en: 'Compression depth (adults)?' },
+          options: [{ uz: '2-3 cm', en: '2-3 cm' }, { uz: '5-6 cm', en: '5-6 cm' }, { uz: '8-10 cm', en: '8-10 cm' }, { uz: '12 cm', en: '12 cm' }], correctIndex: 1 },
+        { id: 'cpr3', question: { uz: 'CPR siklini qancha vaqt davom ettirish?', en: 'Continue CPR cycle until?' },
+          options: [{ uz: '5 daqiqa', en: '5 minutes' }, { uz: 'Tibbiyot xodimi keladi yoki AED', en: 'Medical help arrives or AED available' }, { uz: '1 marotaba', en: 'Once' }, { uz: 'Yo\'lovchi qaytadan nafas oladi', en: 'Patient breathes again' }], correctIndex: 1 },
+      ]}},
+    ]},
+  }, {
+    id: 'choking-heimlich', titleKey: 'phases.6.title', type: 'text', xpReward: 60, durationMinutes: 20,
+    content: { blocks: [
+      { type: 'heading', text: { uz: 'Choking — Heimlich manyovri', en: 'Choking — Heimlich Maneuver' } },
+      { type: 'list', items: [
+        { uz: 'Yo\'lovchi qo\'lini bo\'g\'ziga olib bordi → bo\'g\'ilish belgisi', en: 'Hand to throat = universal choking sign' },
+        { uz: '1. "Bo\'g\'ilyapsizmi?" deb so\'rang', en: '1. Ask: "Are you choking?"' },
+        { uz: '2. Orqasiga turing, mushtni nafas yo\'lining ostiga qo\'ying', en: '2. Stand behind, fist below ribcage' },
+        { uz: '3. Tepaga va ichkariga 5 marta tortib chiqaring', en: '3. Sharp inward/upward thrusts × 5' },
+        { uz: '4. 5 ta orqa zarba bilan almashtiring', en: '4. Alternate with 5 back blows' },
+        { uz: '5. Yo\'lovchi hushidan ketsa — CPR boshlang', en: '5. If unconscious — start CPR' },
+        { uz: '⚠️ Homilador / semiz: ko\'krak siqish (qorin emas)', en: '⚠️ Pregnant / obese: chest thrusts (not abdominal)' },
       ]},
     ]},
   }, {
@@ -143,14 +179,40 @@ export const phase6: Phase = {
     content: { blocks: [{ type: 'scenario', scenario: {
       id: 'fa1', startNode: 'start',
       nodes: {
-        start: { text: { uz: 'Yo\'lovchi hushidan ketdi. Nima qilasiz?', en: 'A passenger fainted. What do you do?' },
+        start: { text: { uz: 'Yo\'lovchi 30 yoshli erkak, ovqat paytida birdan qo\'lini bo\'g\'ziga olib keldi va nafas ololmayapti.', en: 'A 30-year-old male suddenly grabs his throat during meal and cannot breathe.' },
           choices: [
-            { id: 'c1', text: { uz: 'Bosh ekipajni xabar qilaman, tibbiy yordam ko\'rsataman', en: 'Notify flight deck, provide medical assistance' }, nextNode: 'good', xpDelta: 20, feedback: { uz: 'To\'g\'ri!', en: 'Correct!' } },
-            { id: 'c2', text: { uz: 'Hech narsa qilmayman', en: 'Do nothing' }, nextNode: 'bad', xpDelta: -20, feedback: { uz: 'Har doim yordam bering!', en: 'Always provide assistance!' } },
+            { id: 'c1', text: { uz: 'Suv beraman', en: 'Give water' }, nextNode: 'bad', xpDelta: -10, feedback: { uz: 'Suv vaziyatni yomonlashtiradi', en: 'Water worsens choking' } },
+            { id: 'c2', text: { uz: 'Heimlich manyovri (5 orqa zarba + 5 qorin siqish)', en: 'Heimlich (5 back blows + 5 abdominal thrusts)' }, nextNode: 'good', xpDelta: 25, feedback: { uz: 'A\'lo! To\'g\'ri usul', en: 'Excellent! Correct technique' } },
+            { id: 'c3', text: { uz: 'Suvga qo\'yib, kutaman', en: 'Sit down and wait' }, nextNode: 'bad', xpDelta: -15, feedback: { uz: 'Vaqt yo\'qotmang', en: 'Do not lose time' } },
           ]},
-        good: { isEnd: true, text: { uz: 'Yo\'lovchi tiklandi.', en: 'Passenger recovered.' }, endFeedback: { uz: 'Professional!', en: 'Professional!' } },
-        bad: { isEnd: true, text: { uz: 'Vaziyat yomonlashdi.', en: 'Situation worsened.' }, endFeedback: { uz: 'Har doim harakat qiling.', en: 'Always take action.' } },
+        good: { text: { uz: 'Ovqat bo\'lagi chiqdi, yo\'lovchi nafas oldi.', en: 'Food dislodged, passenger breathes again.' },
+          choices: [
+            { id: 'c4', text: { uz: 'Tibbiyot xodimini chaqiraman', en: 'Call medical professional onboard' }, nextNode: 'gold', xpDelta: 15, feedback: { uz: 'To\'g\'ri — keyingi monitoring kerak', en: 'Right — follow-up monitoring needed' } },
+            { id: 'c5', text: { uz: 'Bo\'ldi, ish tugadi', en: 'Done, move on' }, nextNode: 'okay', xpDelta: 0, feedback: { uz: 'Doim takroriy tekshirish', en: 'Always re-assess' } },
+          ]},
+        gold: { isEnd: true, text: { uz: 'Pilot xabardor qilindi, yo\'lovchi kuzatuvda.', en: 'Pilot informed, passenger under observation.' }, endFeedback: { uz: 'Mukammal javob!', en: 'Perfect response!' } },
+        okay: { isEnd: true, text: { uz: 'Yo\'lovchi yaxshi, lekin protokol to\'liq emas', en: 'Passenger OK but protocol incomplete' }, endFeedback: { uz: 'Doim flight deck ga xabar bering', en: 'Always notify the flight deck' } },
+        bad: { isEnd: true, text: { uz: 'Yo\'lovchi hushidan ketdi, CPR boshlash kerak.', en: 'Passenger lost consciousness, CPR required.' }, endFeedback: { uz: 'Tezroq Heimlich kerak edi', en: 'Should have used Heimlich immediately' } },
       },
     }}]},
+  }, {
+    id: 'allergic-reaction', titleKey: 'phases.6.title', type: 'text', xpReward: 55, durationMinutes: 20,
+    content: { blocks: [
+      { type: 'heading', text: { uz: 'Anaphylaxis — og\'ir allergik reaksiya', en: 'Anaphylaxis — Severe Allergic Reaction' } },
+      { type: 'list', items: [
+        { uz: '🚨 Belgilar: shishish, qichishish, qiyin nafas, terining ko\'kishi', en: '🚨 Signs: swelling, itching, difficulty breathing, blue skin' },
+        { uz: '1. EpiPen (Adrenalin) — son sirtqi tomonida 10 soniya', en: '1. EpiPen (Epinephrine) — outer thigh, hold 10 sec' },
+        { uz: '2. Yo\'lovchini chalqancha yotqizing, oyoqlarni ko\'taring', en: '2. Lay supine, elevate legs' },
+        { uz: '3. Oxygen mask qo\'ying (agar bor)', en: '3. Apply oxygen mask if available' },
+        { uz: '4. Captain ga xabar — emergency diversion mumkin', en: '4. Inform captain — possible diversion' },
+        { uz: '5. 5-15 daqiqada qaytarish mumkin', en: '5. May need to repeat dose in 5-15 min' },
+      ]},
+      { type: 'quiz', quiz: { id: 'allergy-q', passingScore: 80, questions: [
+        { id: 'al1', question: { uz: 'EpiPen qaerga uriladi?', en: 'Where to inject EpiPen?' },
+          options: [{ uz: 'Qo\'l venasi', en: 'Arm vein' }, { uz: 'Son sirtqi muskuli', en: 'Outer thigh muscle' }, { uz: 'Yelka', en: 'Shoulder' }, { uz: 'Qorin', en: 'Abdomen' }], correctIndex: 1 },
+        { id: 'al2', question: { uz: 'Anaphylaxis vaqtida birinchi ish?', en: 'First action in anaphylaxis?' },
+          options: [{ uz: 'Suv berish', en: 'Give water' }, { uz: 'EpiPen', en: 'EpiPen' }, { uz: 'Tinchlantirish', en: 'Calm them' }, { uz: 'Kutish', en: 'Wait it out' }], correctIndex: 1 },
+      ]}},
+    ]},
   }],
 }

@@ -281,6 +281,92 @@
     "chooseResponse": "Javobingizni tanlang",
     "continue": "Davom etish"
   },
+  "page": {
+    "back": "Orqaga",
+    "exploreMore": "Ko'proq",
+    "actions": "Harakatlar",
+    "overview": "Umumiy ko'rinish",
+    "details": "Tafsilotlar",
+    "stats": "Statistika",
+    "noData": "Hozircha ma'lumot yo'q"
+  },
+  "assessmentPage": {
+    "hero": "Mock Assessment Day",
+    "subtitle": "Etihad assessment kunini real vaqt simulyatsiyasi",
+    "stepLabel": "Bosqich",
+    "tipsTitle": "Maslahatlar",
+    "tip1": "Mock ni 1 marotaba haqiqiy sharoitda o'tkazing — kostyum kiyib",
+    "tip2": "Har bir bosqichdan keyin o'zingizga halol baho bering",
+    "tip3": "Video yozsangiz — ko'rib, kamchiliklarni qayd qiling",
+    "scoreLabel": "Sizning bahoyingiz",
+    "doneTitle": "Mock tugadi!",
+    "averageScore": "O'rtacha ball",
+    "restart": "Qaytadan boshlash",
+    "categories": "Toifalar"
+  },
+  "dailyPage": {
+    "subtitle": "Bugungi 2 soatlik parvoz rejasi",
+    "dayLabel": "Kun",
+    "progressLabel": "Bajarildi",
+    "totalBlocks": "Bloklar",
+    "doneCount": "Tugatildi",
+    "remaining": "Qoldi",
+    "minutes": "daqiqa",
+    "challengeTitle": "Daily Challenge",
+    "tipTitle": "Bugungi maslahat",
+    "tip1": "Birinchi bo'lib challenge'ni hal qiling — mozg'ingizni qizdiradi",
+    "tip2": "Darsdan keyin 5 daqiqa dam oling, keyin ingliz tiliga o'ting",
+    "tip3": "Yakuniy bloked Flight Log yozish — eng muhim qismi"
+  },
+  "documentsPage": {
+    "subtitle": "CV, vault va ariza checklist",
+    "vaultDesc": "Barcha hujjatlarni bir joyda saqlang",
+    "checklistDesc": "Etihad ariza qadamlari",
+    "completedCount": "{{done}}/{{total}} tayyor",
+    "uploadHere": "Bu yerga yuklang",
+    "previewLabel": "Jonli ko'rish"
+  },
+  "englishPage": {
+    "subtitle": "IPA, lug'at, flashcards va speaking",
+    "totalWords": "So'zlar",
+    "ipaCount": "IPA tovushlar",
+    "tipTitle": "Speaking Lab maslahati",
+    "tipBody": "Mikrofonga gapiring va ovozingizni eshiting — talaffuzni tuzatish uchun eng yaxshi usul"
+  },
+  "gamesPage": {
+    "subtitle": "Etihad bo'lajak xodimlari uchun cognitive testlar",
+    "memoryDesc": "Xotira: kartochkalarni juftlang",
+    "reactionDesc": "Reaksiya: rang o'zgarganda bosing",
+    "patternDesc": "Pattern: ketma-ketlikni topish",
+    "sjtDesc": "SJT: vaziyatga to'g'ri javob",
+    "playNow": "Hozir o'ynash",
+    "bestScore": "Eng yaxshi",
+    "totalGames": "Jami o'yinlar",
+    "averageScore": "O'rtacha"
+  },
+  "journeyPage": {
+    "subtitle": "13 bosqichli o'quv yo'li — phase 0 dan Etihad Ready ga qadar",
+    "totalPhases": "Bosqichlar",
+    "completedPhases": "Tugatildi",
+    "currentPhase": "Joriy",
+    "lockedPhases": "Qulflangan",
+    "phaseLabel": "Phase"
+  },
+  "lessonPage": {
+    "phaseLabel": "Phase",
+    "duration": "{{min}} min",
+    "reward": "+{{xp}} XP"
+  },
+  "profilePage": {
+    "subtitle": "Sizning Etihad sari yo'l xaritangiz",
+    "memberSince": "Boshlanish",
+    "longestStreak": "Eng uzun streak",
+    "flightLogs": "Flight Loglar",
+    "heightLabel": "Bo'y",
+    "ageLabel": "Yosh",
+    "noBadges": "Hali yutuq yo'q — birinchi darsni tugating!",
+    "recentLogs": "Oxirgi yozuvlar"
+  },
   "sep": {
     "title": "SEP Drill",
     "step": "Qadam",
