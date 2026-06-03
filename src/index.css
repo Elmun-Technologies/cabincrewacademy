@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-etihad-blue: #002f6c;
+  --color-etihad-gold: #bd8b13;
+  --color-etihad-light: #f5f7fa;
+  --color-etihad-dark: #001a3d;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-etihad-light text-gray-900 antialiased;
+    font-family: var(--font-sans);
+    margin: 0;
+    min-height: 100svh;
+  }
+
+  #root {
+    min-height: 100svh;
+  }
+}
+
+@layer utilities {
+  .gradient-etihad {
+    background: linear-gradient(135deg, #002f6c 0%, #004080 50%, #001a3d 100%);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(90deg, #bd8b13, #d4a017);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .streak-fire {
+    animation: pulse-fire 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-fire {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .journey-path {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 8px,
+      #cbd5e1 8px,
+      #cbd5e1 16px
+    );
+  }
+}

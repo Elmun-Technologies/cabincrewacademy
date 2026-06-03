@@ -1,0 +1,251 @@
+{
+  "app": {
+    "name": "Cabin Crew Academy",
+    "tagline": "Prepare for Etihad Airways"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "journey": "Journey Map",
+    "english": "English",
+    "daily": "Daily Plan",
+    "documents": "Documents",
+    "assessment": "Assessment",
+    "games": "Games",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full Name",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "welcomeBack": "Welcome back!",
+    "createAccount": "Create your account",
+    "localMode": "Local mode (Supabase not configured)"
+  },
+  "onboarding": {
+    "title": "Etihad Preparation",
+    "subtitle": "Check your profile and requirements",
+    "age": "Age",
+    "height": "Height (cm)",
+    "languages": "Your languages",
+    "requirements": "Etihad minimum requirements",
+    "reqAge": "21+ years old",
+    "reqHeight": "163 cm minimum",
+    "reqEducation": "High school diploma",
+    "reqEnglish": "Fluent in English",
+    "reqTattoo": "No visible tattoos/piercings",
+    "reqSwim": "Swim with flotation device",
+    "reqTravel": "Unrestricted travel",
+    "reqAlcohol": "Serve alcohol (including Ramadan)",
+    "continue": "Continue",
+    "ready": "You meet the requirements!",
+    "notReady": "Review some requirements"
+  },
+  "dashboard": {
+    "welcome": "Hello, {{name}}!",
+    "continueJourney": "Continue Journey",
+    "dailyPlan": "Today's Plan",
+    "readinessScore": "Readiness",
+    "totalXp": "Total XP",
+    "streak": "Streak",
+    "level": "Level",
+    "days": "days",
+    "minutesToday": "Studied today",
+    "quickActions": "Quick Actions"
+  },
+  "daily": {
+    "title": "Daily Flight Plan",
+    "subtitle": "2-hour study schedule",
+    "totalTime": "Total time",
+    "minutes": "minutes",
+    "complete": "Completed",
+    "start": "Start",
+    "practice": "Practice",
+    "review": "Review + Flight Log",
+    "challenges": {
+      "termMatch": "Term Match",
+      "sixtySecondPitch": "60 Second Pitch",
+      "scenarioSprint": "Scenario Sprint",
+      "pronunciationDrill": "Pronunciation Drill",
+      "memoryFlight": "Memory Flight"
+    },
+    "flightLog": "Flight Log entry",
+    "flightLogPlaceholder": "What did you learn today?",
+    "saveLog": "Save"
+  },
+  "journey": {
+    "title": "Journey Map",
+    "subtitle": "16-phase learning path",
+    "locked": "Locked",
+    "unlocked": "Unlocked",
+    "completed": "Completed",
+    "progress": "Progress",
+    "startLesson": "Start Lesson",
+    "bossQuiz": "Boss Quiz"
+  },
+  "phases": {
+    "0": { "title": "Readiness Check", "desc": "Profile & requirements" },
+    "1": { "title": "Aviation Basics", "desc": "Terms & aircraft" },
+    "2": { "title": "Etihad Knowledge", "desc": "Company & culture" },
+    "3": { "title": "Grooming & Image", "desc": "Professional appearance" },
+    "4": { "title": "Customer Service", "desc": "Guest experience" },
+    "5": { "title": "SEP Safety", "desc": "Emergency procedures" },
+    "6": { "title": "First Aid", "desc": "Medical emergencies" },
+    "7": { "title": "Aviation English", "desc": "English proficiency" },
+    "8": { "title": "Interview Prep", "desc": "Interview & video" },
+    "9": { "title": "Assessment Day", "desc": "Full simulation" },
+    "10": { "title": "Documents", "desc": "CV & application" },
+    "11": { "title": "Gamified Tests", "desc": "Mini-games" },
+    "12": { "title": "Final Mock", "desc": "Final evaluation" }
+  },
+  "english": {
+    "title": "English Academy",
+    "ipa": "IPA Foundations",
+    "grammar": "Core Grammar",
+    "aviation": "Aviation English",
+    "phraseology": "Phraseology",
+    "interview": "Interview English",
+    "speaking": "Speaking Lab",
+    "flashcards": "Flashcards",
+    "glossary": "Glossary",
+    "listen": "Listen",
+    "repeat": "Repeat",
+    "next": "Next",
+    "correct": "Correct!",
+    "incorrect": "Incorrect",
+    "showAnswer": "Show answer"
+  },
+  "lesson": {
+    "complete": "Complete Lesson",
+    "next": "Next",
+    "quiz": "Quiz",
+    "score": "Score",
+    "passed": "You passed!",
+    "failed": "Try again",
+    "xpEarned": "+{{xp}} XP"
+  },
+  "games": {
+    "title": "Test Arena",
+    "memory": "Memory Cards",
+    "reaction": "Reaction Time",
+    "pattern": "Pattern Match",
+    "sjt": "SJT Test",
+    "play": "Play",
+    "score": "Score",
+    "best": "Best",
+    "tryAgain": "Try Again"
+  },
+  "documents": {
+    "title": "Documents",
+    "cvBuilder": "CV Builder",
+    "vault": "Document Vault",
+    "checklist": "Application Checklist",
+    "export": "Export PDF",
+    "upload": "Upload",
+    "types": {
+      "cv": "CV / Resume",
+      "photo": "Professional Photo",
+      "certificate": "Certificate",
+      "passport": "Passport Copy",
+      "diploma": "Diploma"
+    },
+    "status": {
+      "missing": "Missing",
+      "uploaded": "Uploaded",
+      "verified": "Verified"
+    }
+  },
+  "assessment": {
+    "title": "Assessment Simulator",
+    "mockDay": "Mock Assessment Day",
+    "videoInterview": "Video Interview",
+    "englishTest": "English Test",
+    "groupExercise": "Group Exercise",
+    "groomingCheck": "Grooming Check",
+    "startRecording": "Start Recording",
+    "stopRecording": "Stop",
+    "timer": "Time",
+    "selfScore": "Self Score",
+    "submit": "Submit"
+  },
+  "cv": {
+    "title": "CV Builder",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "nationality": "Nationality",
+    "languagesLabel": "Languages",
+    "education": "Education",
+    "experience": "Experience",
+    "skills": "Skills",
+    "summary": "Professional Summary",
+    "preview": "Preview",
+    "save": "Save"
+  },
+  "profile": {
+    "title": "Profile",
+    "stats": "Statistics",
+    "badges": "Badges",
+    "settings": "Settings",
+    "language": "Language"
+  },
+  "levels": {
+    "cabin_trainee": "Cabin Trainee",
+    "junior_crew": "Junior Crew",
+    "senior_prep": "Senior Prep",
+    "etihad_ready": "Etihad Ready"
+  },
+  "badges": {
+    "firstFlight": "First Flight",
+    "firstFlightDesc": "Completed your first lesson",
+    "englishWings": "English Wings",
+    "englishWingsDesc": "Completed IPA module",
+    "sepMaster": "SEP Master",
+    "sepMasterDesc": "Safety module 90%+",
+    "etihadScholar": "Etihad Scholar",
+    "etihadScholarDesc": "Etihad knowledge 100%",
+    "assessmentAce": "Assessment Ace",
+    "assessmentAceDesc": "Mock day 85%+",
+    "documentReady": "Document Ready",
+    "documentReadyDesc": "All documents ready",
+    "streak7": "7 Day Streak",
+    "streak7Desc": "7 consecutive days",
+    "streak30": "30 Day Streak",
+    "streak30Desc": "30 consecutive days",
+    "serviceStar": "Service Star",
+    "serviceStarDesc": "Customer service complete",
+    "firstAidHero": "First Aid Hero",
+    "firstAidHeroDesc": "First aid module complete"
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "continue": "Continue",
+    "complete": "Complete",
+    "start": "Start",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "readiness": {
+    "english": "English",
+    "aviation": "Aviation Knowledge",
+    "softSkills": "Soft Skills",
+    "documents": "Documents",
+    "applyNow": "Ready to apply!"
+  },
+  "scenario": {
+    "chooseResponse": "Choose your response",
+    "continue": "Continue"
+  },
+  "sep": {
+    "title": "SEP Drill",
+    "step": "Step",
+    "nextStep": "Next Step"
+  }
+}

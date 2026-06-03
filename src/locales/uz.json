@@ -1,0 +1,251 @@
+{
+  "app": {
+    "name": "Cabin Crew Academy",
+    "tagline": "Etihad Airways ga tayyorgarlik"
+  },
+  "nav": {
+    "dashboard": "Bosh sahifa",
+    "journey": "Yo'l xaritasi",
+    "english": "Ingliz tili",
+    "daily": "Kunlik reja",
+    "documents": "Hujjatlar",
+    "assessment": "Assessment",
+    "games": "O'yinlar",
+    "profile": "Profil",
+    "logout": "Chiqish"
+  },
+  "auth": {
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "email": "Email",
+    "password": "Parol",
+    "fullName": "To'liq ism",
+    "noAccount": "Hisobingiz yo'qmi?",
+    "hasAccount": "Hisobingiz bormi?",
+    "welcomeBack": "Xush kelibsiz!",
+    "createAccount": "Hisob yarating",
+    "localMode": "Mahalliy rejim (Supabase sozlanmagan)"
+  },
+  "onboarding": {
+    "title": "Etihad tayyorgarligi",
+    "subtitle": "Profil va talablarni tekshiring",
+    "age": "Yosh",
+    "height": "Bo'y (sm)",
+    "languages": "Tillaringiz",
+    "requirements": "Etihad minimum talablari",
+    "reqAge": "21 yoshdan katta",
+    "reqHeight": "163 sm dan baland",
+    "reqEducation": "O'rta ma'lumot (12-sinf)",
+    "reqEnglish": "Ingliz tilida erkin",
+    "reqTattoo": "Tatu/pirsing ko'rinmasligi",
+    "reqSwim": "Flotation device bilan suza olish",
+    "reqTravel": "Cheklovsiz sayohat",
+    "reqAlcohol": "Alkogol xizmati (Ramazon ham)",
+    "continue": "Davom etish",
+    "ready": "Siz talablarga javob berasiz!",
+    "notReady": "Ba'zi talablarga e'tibor bering"
+  },
+  "dashboard": {
+    "welcome": "Salom, {{name}}!",
+    "continueJourney": "Davom etish",
+    "dailyPlan": "Bugungi reja",
+    "readinessScore": "Tayyorgarlik",
+    "totalXp": "Jami XP",
+    "streak": "Streak",
+    "level": "Daraja",
+    "days": "kun",
+    "minutesToday": "Bugun o'qilgan",
+    "quickActions": "Tezkor harakatlar"
+  },
+  "daily": {
+    "title": "Kunlik parvoz rejasi",
+    "subtitle": "2 soatlik o'quv rejasi",
+    "totalTime": "Jami vaqt",
+    "minutes": "daqiqa",
+    "complete": "Tugatildi",
+    "start": "Boshlash",
+    "practice": "Amaliyot",
+    "review": "Review + Flight Log",
+    "challenges": {
+      "termMatch": "Termin Match",
+      "sixtySecondPitch": "60 soniyalik Pitch",
+      "scenarioSprint": "Scenario Sprint",
+      "pronunciationDrill": "Talaffuz mashqi",
+      "memoryFlight": "Memory Flight"
+    },
+    "flightLog": "Flight Log yozuvi",
+    "flightLogPlaceholder": "Bugun nima o'rgandingiz?",
+    "saveLog": "Saqlash"
+  },
+  "journey": {
+    "title": "Yo'l xaritasi",
+    "subtitle": "16 bosqichli o'quv yo'li",
+    "locked": "Qulflangan",
+    "unlocked": "Ochiq",
+    "completed": "Tugallangan",
+    "progress": "Progress",
+    "startLesson": "Darsni boshlash",
+    "bossQuiz": "Boss Quiz"
+  },
+  "phases": {
+    "0": { "title": "Tayyorgarlik tekshiruvi", "desc": "Profil va talablar" },
+    "1": { "title": "Aviatsiya asoslari", "desc": "Terminlar va samolyotlar" },
+    "2": { "title": "Etihad bilimi", "desc": "Kompaniya va madaniyat" },
+    "3": { "title": "Grooming & Image", "desc": "Tashqi ko'rinish" },
+    "4": { "title": "Mijozlarga xizmat", "desc": "Customer service" },
+    "5": { "title": "SEP xavfsizlik", "desc": "Favqulodda vaziyatlar" },
+    "6": { "title": "First Aid", "desc": "Birinchi yordam" },
+    "7": { "title": "Aviation English", "desc": "Ingliz tili" },
+    "8": { "title": "Intervyu tayyorgarligi", "desc": "Suhbat va video" },
+    "9": { "title": "Assessment Day", "desc": "To'liq simulyatsiya" },
+    "10": { "title": "Hujjatlar", "desc": "CV va ariza" },
+    "11": { "title": "Gamified testlar", "desc": "Mini-o'yinlar" },
+    "12": { "title": "Final Mock", "desc": "Yakuniy baholash" }
+  },
+  "english": {
+    "title": "English Academy",
+    "ipa": "IPA asoslari",
+    "grammar": "Grammatika",
+    "aviation": "Aviation English",
+    "phraseology": "Phraseology",
+    "interview": "Interview English",
+    "speaking": "Speaking Lab",
+    "flashcards": "Flashcards",
+    "glossary": "Lug'at",
+    "listen": "Tinglang",
+    "repeat": "Takrorlang",
+    "next": "Keyingi",
+    "correct": "To'g'ri!",
+    "incorrect": "Noto'g'ri",
+    "showAnswer": "Javobni ko'rsatish"
+  },
+  "lesson": {
+    "complete": "Darsni tugatish",
+    "next": "Keyingi",
+    "quiz": "Quiz",
+    "score": "Ball",
+    "passed": "O'tdingiz!",
+    "failed": "Qayta urinib ko'ring",
+    "xpEarned": "+{{xp}} XP"
+  },
+  "games": {
+    "title": "Test Arena",
+    "memory": "Memory Cards",
+    "reaction": "Reaction Time",
+    "pattern": "Pattern Match",
+    "sjt": "SJT Test",
+    "play": "O'ynash",
+    "score": "Ball",
+    "best": "Rekord",
+    "tryAgain": "Qayta"
+  },
+  "documents": {
+    "title": "Hujjatlar",
+    "cvBuilder": "CV yaratish",
+    "vault": "Hujjatlar vault",
+    "checklist": "Ariza checklist",
+    "export": "PDF eksport",
+    "upload": "Yuklash",
+    "types": {
+      "cv": "CV / Resume",
+      "photo": "Professional foto",
+      "certificate": "Sertifikat",
+      "passport": "Pasport nusxasi",
+      "diploma": "Diplom"
+    },
+    "status": {
+      "missing": "Yo'q",
+      "uploaded": "Yuklangan",
+      "verified": "Tasdiqlangan"
+    }
+  },
+  "assessment": {
+    "title": "Assessment Simulator",
+    "mockDay": "Mock Assessment Day",
+    "videoInterview": "Video intervyu",
+    "englishTest": "Ingliz tili testi",
+    "groupExercise": "Guruh mashqi",
+    "groomingCheck": "Grooming tekshiruvi",
+    "startRecording": "Yozishni boshlash",
+    "stopRecording": "To'xtatish",
+    "timer": "Vaqt",
+    "selfScore": "O'z bahoingiz",
+    "submit": "Yuborish"
+  },
+  "cv": {
+    "title": "CV Builder",
+    "fullName": "To'liq ism",
+    "email": "Email",
+    "phone": "Telefon",
+    "nationality": "Millati",
+    "languagesLabel": "Tilllar",
+    "education": "Ta'lim",
+    "experience": "Tajriba",
+    "skills": "Ko'nikmalar",
+    "summary": "Qisqa bio",
+    "preview": "Ko'rish",
+    "save": "Saqlash"
+  },
+  "profile": {
+    "title": "Profil",
+    "stats": "Statistika",
+    "badges": "Yutuqlar",
+    "settings": "Sozlamalar",
+    "language": "Til"
+  },
+  "levels": {
+    "cabin_trainee": "Cabin Trainee",
+    "junior_crew": "Junior Crew",
+    "senior_prep": "Senior Prep",
+    "etihad_ready": "Etihad Ready"
+  },
+  "badges": {
+    "firstFlight": "First Flight",
+    "firstFlightDesc": "Birinchi darsni tugatdingiz",
+    "englishWings": "English Wings",
+    "englishWingsDesc": "IPA modulini tugatdingiz",
+    "sepMaster": "SEP Master",
+    "sepMasterDesc": "Xavfsizlik moduli 90%+",
+    "etihadScholar": "Etihad Scholar",
+    "etihadScholarDesc": "Etihad bilimi 100%",
+    "assessmentAce": "Assessment Ace",
+    "assessmentAceDesc": "Mock day 85%+",
+    "documentReady": "Document Ready",
+    "documentReadyDesc": "Barcha hujjatlar tayyor",
+    "streak7": "7 kun streak",
+    "streak7Desc": "7 kun ketma-ket o'qidingiz",
+    "streak30": "30 kun streak",
+    "streak30Desc": "30 kun ketma-ket o'qidingiz",
+    "serviceStar": "Service Star",
+    "serviceStarDesc": "Customer service moduli tugadi",
+    "firstAidHero": "First Aid Hero",
+    "firstAidHeroDesc": "First aid moduli tugadi"
+  },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "back": "Orqaga",
+    "continue": "Davom etish",
+    "complete": "Tugatish",
+    "start": "Boshlash",
+    "yes": "Ha",
+    "no": "Yo'q"
+  },
+  "readiness": {
+    "english": "Ingliz tili",
+    "aviation": "Aviatsiya bilimi",
+    "softSkills": "Soft skills",
+    "documents": "Hujjatlar",
+    "applyNow": "Ariza berishga tayyor!"
+  },
+  "scenario": {
+    "chooseResponse": "Javobingizni tanlang",
+    "continue": "Davom etish"
+  },
+  "sep": {
+    "title": "SEP Drill",
+    "step": "Qadam",
+    "nextStep": "Keyingi qadam"
+  }
+}
