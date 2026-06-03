@@ -334,15 +334,34 @@
     "tipBody": "Speak into the mic and listen back — the best way to fix pronunciation"
   },
   "gamesPage": {
-    "subtitle": "Cognitive tests for future Etihad crew",
-    "memoryDesc": "Memory: pair the cards",
-    "reactionDesc": "Reaction: tap when colour changes",
-    "patternDesc": "Pattern: find the sequence",
-    "sjtDesc": "SJT: respond correctly to situations",
-    "playNow": "Play now",
+    "subtitle": "Etihad cognitive test simulator — each game mirrors a real interview test",
+    "memoryDesc": "Short-term memory — recall safety equipment positions",
+    "reactionDesc": "Reaction speed — the crew's vigilance under pressure",
+    "patternDesc": "Pattern recognition — spot sequences quickly",
+    "sjtDesc": "Situational Judgment Test — pick the right call",
+    "playNow": "Start playing",
     "bestScore": "Best",
     "totalGames": "Total games",
-    "averageScore": "Average"
+    "averageScore": "Average",
+    "howToPlay": "How to play",
+    "whyMatters": "Why it matters",
+    "skillTested": "Skill tested",
+    "memoryHowTo": "Pair the cards — each click flips one. Find two matching cards and they stay open. Goal: clear the board in the fewest moves.",
+    "memoryWhy": "Cabin crew memorize safety procedures, passenger names and allergy info. This test measures recall speed under pressure.",
+    "memorySkill": "Short-term memory, visual recall",
+    "reactionHowTo": "When you see RED — WAIT. When it turns GREEN, tap immediately. Tapping early restarts. 200-300 ms is excellent.",
+    "reactionWhy": "Airline recruiters (Arctic Shores, HireVue) test snap decision-making. In emergencies, every second matters.",
+    "reactionSkill": "Reaction speed, attention control",
+    "patternHowTo": "A colour sequence is shown. Memorize, then tap them back in order. Each round adds one more step.",
+    "patternWhy": "Pattern recognition matters for learning cabin protocols, safety drill sequences and service rituals.",
+    "patternSkill": "Pattern recognition, working memory",
+    "sjtHowTo": "Read the real-world situation. Pick the best response — each option scores 0-10. \"Customer first + Team first\" mantra.",
+    "sjtWhy": "SJT is the most important assessment-day component. It checks whether you make decisions aligned with Etihad values.",
+    "sjtSkill": "Decision making, professional ethics, customer orientation",
+    "startGame": "Start game",
+    "closeInfo": "Close",
+    "yourScore": "Your score",
+    "tryAgain": "Try again"
   },
   "journeyPage": {
     "subtitle": "13-phase learning path — from phase 0 to Etihad Ready",
@@ -356,6 +375,37 @@
     "phaseLabel": "Phase",
     "duration": "{{min}} min",
     "reward": "+{{xp}} XP"
+  },
+  "study": {
+    "title": "90-DAY ROADMAP",
+    "subtitle": "12 weeks — Foundation → Skills → Application",
+    "weekLabel": "Week",
+    "finalGoal": "Final goal",
+    "finalGoalDesc": "By end of week 12 — fully ready to apply to Etihad",
+    "theme": {
+      "foundation": "Foundations",
+      "skills": "Skills",
+      "apply": "Application"
+    },
+    "milestone": {
+      "m1": "Foundations done — aviation & Etihad basics",
+      "m2": "Soft skills + English strong",
+      "m3": "Application-ready — apply!"
+    },
+    "goal": {
+      "w1": "Profile + aviation basics",
+      "w2": "Etihad knowledge + aviation terms",
+      "w3": "Grooming + customer service intro",
+      "w4": "English IPA start — Month 1 wrap",
+      "w5": "Customer service deep + English",
+      "w6": "SEP safety + English vocab",
+      "w7": "First Aid (CPR, choking) + English",
+      "w8": "Interview prep — Month 2 wrap",
+      "w9": "Mock interview + gamified tests",
+      "w10": "Assessment Day full prep",
+      "w11": "Documents + final mock",
+      "w12": "Final assessment — apply!"
+    }
   },
   "profilePage": {
     "subtitle": "Your road map to Etihad",

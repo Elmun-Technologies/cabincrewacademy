@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Hand, Timer, RotateCw, Sparkles, Trophy } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardTitle } from '@/components/ui/card'
 import { sjtQuestions } from '@/content/phases'
 import { useAppStore } from '@/stores/app-store'
+import { cn } from '@/lib/utils'
 
 const AVIATION_TERMS = [
   { term: 'Galley', match: 'Kitchen' },
@@ -42,7 +44,7 @@ function TermMatchChallenge({ onComplete }: { onComplete: () => void }) {
   const [matched, setMatched] = useState<Set<string>>(new Set())
   const [done, setDone] = useState(false)
   const terms = AVIATION_TERMS.slice(0, 4)
-  const shuffledDefs = [...terms.map((t) => t.match)].sort(() => Math.random() - 0.5)
+  const [shuffledDefs] = useState(() => [...terms.map((t) => t.match)].sort(() => Math.random() - 0.5))
 
   const handleMatch = (def: string) => {
     if (!selected) return
@@ -68,7 +70,12 @@ function TermMatchChallenge({ onComplete }: { onComplete: () => void }) {
               key={t.term}
               disabled={matched.has(t.term) || done}
               onClick={() => setSelected(t.term)}
-              className={`w-full rounded-lg border p-3 text-left ${selected === t.term ? 'border-etihad-blue bg-etihad-blue/10' : matched.has(t.term) ? 'border-green-500 bg-green-50' : ''}`}
+              className={cn(
+                'w-full rounded-xl border p-3 text-left text-sm font-medium transition-all',
+                selected === t.term && 'border-etihad-blue bg-etihad-blue/10',
+                matched.has(t.term) && 'border-emerald-300 bg-emerald-50 text-emerald-700',
+                !selected && !matched.has(t.term) && 'hover:border-etihad-blue/40',
+              )}
             >
               {t.term}
             </button>
@@ -80,14 +87,18 @@ function TermMatchChallenge({ onComplete }: { onComplete: () => void }) {
               key={def}
               disabled={done}
               onClick={() => handleMatch(def)}
-              className="w-full rounded-lg border p-3 text-left hover:border-etihad-blue"
+              className="w-full rounded-xl border border-gray-200 p-3 text-left text-sm transition hover:border-etihad-blue hover:bg-etihad-blue/5"
             >
               {def}
             </button>
           ))}
         </div>
       </div>
-      {done && <p className="mt-4 text-center font-medium text-green-600">+40 XP!</p>}
+      {done && (
+        <div className="mt-4 rounded-xl bg-emerald-50 p-3 text-center font-semibold text-emerald-700">
+          ✓ +40 XP!
+        </div>
+      )}
     </Card>
   )
 }
@@ -141,15 +152,22 @@ function MemoryFlightChallenge({ onComplete }: { onComplete: () => void }) {
           <button
             key={card.id}
             onClick={() => handleFlip(card.id)}
-            className={`flex h-16 items-center justify-center rounded-lg border text-xs font-medium transition-all ${
-              card.flipped || card.matched ? 'border-etihad-blue bg-etihad-blue/10' : 'border-gray-200 bg-gray-100'
-            }`}
+            className={cn(
+              'flex h-16 items-center justify-center rounded-xl border text-xs font-medium transition-all',
+              card.flipped || card.matched
+                ? 'border-etihad-blue bg-etihad-blue/10 text-etihad-dark'
+                : 'border-gray-200 bg-gradient-to-br from-etihad-blue to-etihad-dark text-white hover:scale-105',
+            )}
           >
             {card.flipped || card.matched ? card.text : '?'}
           </button>
         ))}
       </div>
-      {done && <p className="mt-4 text-center font-medium text-green-600">+40 XP!</p>}
+      {done && (
+        <div className="mt-4 rounded-xl bg-emerald-50 p-3 text-center font-semibold text-emerald-700">
+          ✓ +40 XP!
+        </div>
+      )}
     </Card>
   )
 }
@@ -165,6 +183,14 @@ function PronunciationDrill({ onComplete }: { onComplete: () => void }) {
   const [index, setIndex] = useState(0)
   const [done, setDone] = useState(false)
 
+  const speak = (text: string) => {
+    if (!('speechSynthesis' in window)) return
+    const utt = new SpeechSynthesisUtterance(text)
+    utt.lang = 'en-US'
+    utt.rate = 0.85
+    window.speechSynthesis.speak(utt)
+  }
+
   const next = () => {
     if (index >= words.length - 1) {
       setDone(true)
@@ -177,13 +203,23 @@ function PronunciationDrill({ onComplete }: { onComplete: () => void }) {
   return (
     <Card>
       <CardTitle className="mb-4">Pronunciation Drill — {index + 1}/{words.length}</CardTitle>
-      <div className="text-center">
-        <p className="text-3xl font-bold text-etihad-dark">{words[index].word}</p>
-        <p className="mt-2 text-xl text-etihad-gold">{words[index].ipa}</p>
-        <p className="mt-4 text-sm text-gray-500">Repeat aloud 3 times, then continue</p>
-        <Button className="mt-4" onClick={next}>{index >= words.length - 1 ? 'Finish' : 'Next word'}</Button>
+      <div className="rounded-2xl bg-gradient-to-br from-etihad-blue to-etihad-dark p-6 text-center text-white">
+        <p className="text-3xl font-extrabold">{words[index].word}</p>
+        <p className="mt-2 text-xl font-mono text-etihad-gold">{words[index].ipa}</p>
+        <button
+          onClick={() => speak(words[index].word)}
+          className="mt-3 rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold backdrop-blur hover:bg-white/25"
+        >
+          🔊 Listen
+        </button>
+        <p className="mt-4 text-xs text-white/70">Repeat aloud 3 times, then continue</p>
       </div>
-      {done && <p className="mt-4 text-center font-medium text-green-600">+40 XP!</p>}
+      <Button className="mt-4 w-full" onClick={next}>{index >= words.length - 1 ? 'Finish' : 'Next word'}</Button>
+      {done && (
+        <div className="mt-4 rounded-xl bg-emerald-50 p-3 text-center font-semibold text-emerald-700">
+          ✓ +40 XP!
+        </div>
+      )}
     </Card>
   )
 }
@@ -208,17 +244,23 @@ function SixtySecondPitch({ onComplete }: { onComplete: () => void }) {
   return (
     <Card>
       <CardTitle className="mb-4">60 Second Pitch</CardTitle>
-      <p className="mb-4 text-sm text-gray-600">
+      <p className="mb-4 text-sm text-ink-muted">
         Introduce yourself and explain why you want to join Etihad Airways as cabin crew.
       </p>
-      <div className="text-center">
-        <p className="text-5xl font-bold text-etihad-blue">{seconds}s</p>
-        {!running && !done && (
-          <Button className="mt-4" onClick={() => setRunning(true)}>Start Timer</Button>
-        )}
-        {running && <Button className="mt-4" variant="gold" onClick={finish}>Done</Button>}
+      <div className="rounded-2xl bg-gradient-to-br from-etihad-blue to-etihad-dark p-8 text-center">
+        <p className="text-6xl font-extrabold text-white">{seconds}s</p>
       </div>
-      {done && <p className="mt-4 text-center font-medium text-green-600">+40 XP!</p>}
+      <div className="mt-4 flex gap-2">
+        {!running && !done && (
+          <Button className="flex-1" onClick={() => setRunning(true)}>Start Timer</Button>
+        )}
+        {running && <Button className="flex-1" variant="gold" onClick={finish}>Done</Button>}
+      </div>
+      {done && (
+        <div className="mt-4 rounded-xl bg-emerald-50 p-3 text-center font-semibold text-emerald-700">
+          ✓ +40 XP!
+        </div>
+      )}
     </Card>
   )
 }
@@ -247,23 +289,34 @@ function ScenarioSprint({ onComplete }: { onComplete: () => void }) {
   return (
     <Card>
       <CardTitle className="mb-4">Scenario Sprint — {index + 1}/{scenarios.length}</CardTitle>
-      <p className="mb-4 font-medium">{s.q}</p>
-      <div className="space-y-2">
+      <div className="rounded-2xl border-l-4 border-etihad-gold bg-etihad-gold/5 p-3">
+        <p className="font-medium text-etihad-dark">{s.q}</p>
+      </div>
+      <div className="mt-4 space-y-2">
         {s.options.map((opt, i) => (
           <Button key={i} variant="outline" className="w-full justify-start" disabled={done} onClick={() => answer(i)}>
             {opt}
           </Button>
         ))}
       </div>
-      {done && <p className="mt-4 text-center font-medium text-green-600">Score: {score}/{scenarios.length} — +40 XP!</p>}
+      {done && (
+        <div className="mt-4 rounded-xl bg-emerald-50 p-3 text-center font-semibold text-emerald-700">
+          Score: {score}/{scenarios.length} — +40 XP!
+        </div>
+      )}
     </Card>
   )
 }
+
+// ─── Test Arena games (premium versions) ─────────────────────────
 
 export function MemoryGame({ onScore }: { onScore: (score: number) => void }) {
   const [cards, setCards] = useState<{ id: number; text: string; flipped: boolean; matched: boolean }[]>([])
   const [flipped, setFlipped] = useState<number[]>([])
   const [moves, setMoves] = useState(0)
+  const [time, setTime] = useState(0)
+  const [running, setRunning] = useState(false)
+  const [completed, setCompleted] = useState(false)
 
   const init = useCallback(() => {
     const items = SAFETY_ITEMS.slice(0, 6)
@@ -271,12 +324,21 @@ export function MemoryGame({ onScore }: { onScore: (score: number) => void }) {
     setCards(pairs.sort(() => Math.random() - 0.5))
     setFlipped([])
     setMoves(0)
+    setTime(0)
+    setRunning(true)
+    setCompleted(false)
   }, [])
 
   useEffect(() => { init() }, [init])
 
+  useEffect(() => {
+    if (!running || completed) return
+    const id = setInterval(() => setTime((t) => t + 1), 1000)
+    return () => clearInterval(id)
+  }, [running, completed])
+
   const handleFlip = (id: number) => {
-    if (flipped.length >= 2 || cards[id].flipped || cards[id].matched) return
+    if (flipped.length >= 2 || cards[id].flipped || cards[id].matched || completed) return
     const next = cards.map((c) => (c.id === id ? { ...c, flipped: true } : c))
     setCards(next)
     const newFlipped = [...flipped, id]
@@ -293,51 +355,71 @@ export function MemoryGame({ onScore }: { onScore: (score: number) => void }) {
           setCards(matched)
           setFlipped([])
           if (matched.every((c) => c.matched)) {
-            onScore(Math.max(100 - moves * 5, 20))
+            setCompleted(true)
+            setRunning(false)
+            const score = Math.max(100 - moves * 3 - time, 20)
+            onScore(score)
           }
-        }, 500)
+        }, 450)
       } else {
         setTimeout(() => {
           setCards(next.map((c) => ({ ...c, flipped: c.matched })))
           setFlipped([])
-        }, 800)
+        }, 750)
       }
     }
   }
 
   return (
-    <div>
-      <p className="mb-2 text-sm text-gray-500">Moves: {moves}</p>
-      <div className="grid grid-cols-4 gap-2">
-        {cards.map((card) => (
-          <button
-            key={card.id}
-            onClick={() => handleFlip(card.id)}
-            className={`flex h-14 items-center justify-center rounded-lg border text-xs ${
-              card.flipped || card.matched ? 'border-etihad-blue bg-etihad-blue/10' : 'bg-gray-100'
-            }`}
-          >
-            {card.flipped || card.matched ? card.text : '?'}
-          </button>
-        ))}
+    <div className="space-y-4">
+      <div className="flex items-center justify-between rounded-2xl bg-etihad-light p-3">
+        <div className="flex gap-4 text-sm">
+          <span><Hand className="mr-1 inline h-3.5 w-3.5 text-purple-600" />Moves: <b>{moves}</b></span>
+          <span><Timer className="mr-1 inline h-3.5 w-3.5 text-etihad-gold" />{time}s</span>
+        </div>
+        <Button size="sm" variant="outline" onClick={init}>
+          <RotateCw className="h-3.5 w-3.5" /> Restart
+        </Button>
       </div>
-      <Button variant="outline" className="mt-4" onClick={init}>Restart</Button>
+
+      <div className="grid grid-cols-4 gap-2">
+        {cards.map((card) => {
+          const shown = card.flipped || card.matched
+          return (
+            <button
+              key={card.id}
+              onClick={() => handleFlip(card.id)}
+              className={cn(
+                'flex h-16 items-center justify-center rounded-xl border text-xs font-bold transition-all duration-300',
+                shown
+                  ? 'border-emerald-300 bg-emerald-50 text-emerald-700'
+                  : 'border-transparent bg-gradient-to-br from-etihad-blue to-etihad-dark text-white shadow-card hover:scale-105',
+              )}
+            >
+              {shown ? card.text : '?'}
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }
 
 export function ReactionGame({ onScore }: { onScore: (score: number) => void }) {
-  const [state, setState] = useState<'wait' | 'ready' | 'go' | 'done'>('wait')
+  const [state, setState] = useState<'idle' | 'wait' | 'ready' | 'go' | 'done' | 'too-early'>('idle')
   const [reactionTime, setReactionTime] = useState(0)
   const [startTime, setStartTime] = useState(0)
+  const [bestThisSession, setBestThisSession] = useState<number | null>(null)
+  const [attempts, setAttempts] = useState(0)
 
   const start = () => {
     setState('ready')
-    const delay = 1000 + Math.random() * 3000
-    setTimeout(() => {
+    const delay = 1500 + Math.random() * 3000
+    const id = window.setTimeout(() => {
       setState('go')
       setStartTime(Date.now())
     }, delay)
+    return () => clearTimeout(id)
   }
 
   const click = () => {
@@ -345,29 +427,67 @@ export function ReactionGame({ onScore }: { onScore: (score: number) => void }) 
       const time = Date.now() - startTime
       setReactionTime(time)
       setState('done')
+      setAttempts(attempts + 1)
+      if (bestThisSession === null || time < bestThisSession) setBestThisSession(time)
       onScore(Math.max(100 - Math.floor(time / 10), 10))
     } else if (state === 'ready') {
-      setState('wait')
+      setState('too-early')
     }
   }
 
+  const rating = reactionTime < 250 ? '🏆 Excellent' : reactionTime < 350 ? '⭐ Great' : reactionTime < 500 ? '👍 Good' : '💪 Keep practicing'
+
   return (
-    <div className="text-center">
-      {state === 'wait' && <Button onClick={start}>Start</Button>}
+    <div className="space-y-4">
+      {bestThisSession !== null && (
+        <div className="flex items-center justify-between rounded-2xl bg-etihad-light p-3 text-sm">
+          <span><Trophy className="mr-1 inline h-3.5 w-3.5 text-etihad-gold" />Best: <b>{bestThisSession}ms</b></span>
+          <span className="text-ink-muted">Attempts: {attempts}</span>
+        </div>
+      )}
+
+      {state === 'idle' && (
+        <div className="rounded-3xl border-2 border-dashed border-gray-200 p-8 text-center">
+          <Timer className="mx-auto h-10 w-10 text-etihad-gold" />
+          <p className="mt-3 font-bold text-etihad-dark">Reaction Time Test</p>
+          <p className="mt-1 text-sm text-ink-muted">When red turns green — tap as fast as you can</p>
+          <Button className="mt-4" variant="gold" onClick={start}>Start</Button>
+        </div>
+      )}
+
       {state === 'ready' && (
-        <button onClick={click} className="flex h-40 w-full items-center justify-center rounded-xl bg-red-500 text-white text-xl font-bold">
-          Wait...
+        <button
+          onClick={click}
+          className="flex h-48 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-red-500 to-red-600 text-2xl font-extrabold text-white shadow-card-lg transition-transform active:scale-95"
+        >
+          ✋ WAIT...
         </button>
       )}
+
       {state === 'go' && (
-        <button onClick={click} className="flex h-40 w-full items-center justify-center rounded-xl bg-green-500 text-white text-xl font-bold">
-          CLICK NOW!
+        <button
+          onClick={click}
+          className="pulse-ring flex h-48 w-full items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-2xl font-extrabold text-white shadow-card-lg transition-transform active:scale-95"
+        >
+          ⚡ TAP NOW!
         </button>
       )}
+
+      {state === 'too-early' && (
+        <div className="rounded-3xl bg-amber-50 p-8 text-center">
+          <p className="text-2xl">😅</p>
+          <p className="mt-2 font-bold text-amber-700">Too early! Wait for green.</p>
+          <Button className="mt-4" variant="outline" onClick={() => setState('idle')}>Try Again</Button>
+        </div>
+      )}
+
       {state === 'done' && (
-        <div>
-          <p className="text-2xl font-bold">{reactionTime}ms</p>
-          <Button className="mt-4" onClick={() => setState('wait')}>Try Again</Button>
+        <div className="rounded-3xl gradient-emerald p-8 text-center text-white shadow-card-lg">
+          <p className="text-5xl font-extrabold">{reactionTime}<span className="text-2xl opacity-80">ms</span></p>
+          <p className="mt-2 font-bold">{rating}</p>
+          <Button className="mt-4 bg-white text-emerald-700 hover:bg-white/90" onClick={() => setState('idle')}>
+            <RotateCw className="h-3.5 w-3.5" /> Try Again
+          </Button>
         </div>
       )}
     </div>
@@ -378,50 +498,119 @@ export function PatternGame({ onScore }: { onScore: (score: number) => void }) {
   const patterns = ['🔴', '🟢', '🔵', '🟡']
   const [sequence, setSequence] = useState<string[]>([])
   const [userSeq, setUserSeq] = useState<string[]>([])
-  const [showing, setShowing] = useState(false)
+  const [phase, setPhase] = useState<'idle' | 'showing' | 'input' | 'wrong'>('idle')
+  const [highlightIdx, setHighlightIdx] = useState<number | null>(null)
   const [round, setRound] = useState(0)
 
-  const startRound = useCallback(() => {
-    const next = [...sequence, patterns[Math.floor(Math.random() * patterns.length)]]
+  const startGame = useCallback(() => {
+    const first = patterns[Math.floor(Math.random() * patterns.length)]
+    setSequence([first])
+    setUserSeq([])
+    setRound(1)
+    setPhase('showing')
+  }, [])
+
+  const nextRound = useCallback((current: string[]) => {
+    const next = [...current, patterns[Math.floor(Math.random() * patterns.length)]]
     setSequence(next)
     setUserSeq([])
-    setShowing(true)
-    setTimeout(() => setShowing(false), next.length * 600)
-  }, [sequence])
+    setRound(next.length)
+    setPhase('showing')
+  }, [])
 
   useEffect(() => {
-    if (round === 0) startRound()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    if (phase !== 'showing') return
+    let i = 0
+    const interval = setInterval(() => {
+      if (i >= sequence.length) {
+        clearInterval(interval)
+        setHighlightIdx(null)
+        setPhase('input')
+        return
+      }
+      setHighlightIdx(i)
+      i++
+    }, 700)
+    return () => clearInterval(interval)
+  }, [phase, sequence])
 
   const pick = (p: string) => {
-    if (showing) return
+    if (phase !== 'input') return
     const next = [...userSeq, p]
     setUserSeq(next)
     const idx = next.length - 1
     if (next[idx] !== sequence[idx]) {
-      onScore(round * 20)
-      setRound(0)
-      setSequence([])
+      setPhase('wrong')
+      onScore(round * 15)
     } else if (next.length === sequence.length) {
-      setRound(round + 1)
-      setTimeout(startRound, 500)
+      setTimeout(() => nextRound(sequence), 400)
     }
   }
 
+  if (phase === 'idle') {
+    return (
+      <div className="rounded-3xl border-2 border-dashed border-gray-200 p-8 text-center">
+        <Sparkles className="mx-auto h-10 w-10 text-etihad-gold" />
+        <p className="mt-3 font-bold text-etihad-dark">Pattern Recognition</p>
+        <p className="mt-1 text-sm text-ink-muted">Watch the sequence — then tap it back in order</p>
+        <Button className="mt-4" variant="gold" onClick={startGame}>Start</Button>
+      </div>
+    )
+  }
+
   return (
-    <div className="text-center">
-      <p className="mb-4">Round {round + 1} — Repeat the pattern</p>
-      {showing ? (
-        <div className="flex justify-center gap-4 text-4xl">
-          {sequence.map((p, i) => (
-            <span key={i} className="animate-pulse">{p}</span>
+    <div className="space-y-4">
+      <div className="flex items-center justify-between rounded-2xl bg-etihad-light p-3 text-sm">
+        <span>Round <b>{round}</b></span>
+        <span className={cn(
+          'rounded-full px-2 py-0.5 text-xs font-bold',
+          phase === 'showing' && 'bg-etihad-blue/10 text-etihad-blue',
+          phase === 'input' && 'bg-emerald-100 text-emerald-700',
+          phase === 'wrong' && 'bg-red-100 text-red-700',
+        )}>
+          {phase === 'showing' && '👁 Watch'}
+          {phase === 'input' && '✋ Your turn'}
+          {phase === 'wrong' && '❌ Wrong!'}
+        </span>
+      </div>
+
+      <div className="rounded-3xl bg-gradient-to-br from-etihad-blue to-etihad-dark p-8">
+        <div className="flex justify-center gap-4 text-5xl">
+          {phase === 'showing'
+            ? sequence.map((p, i) => (
+                <span key={i} className={cn('transition-all duration-200', highlightIdx === i ? 'scale-150' : 'opacity-30')}>
+                  {p}
+                </span>
+              ))
+            : sequence.map((_, i) => (
+                <span key={i} className={cn('text-3xl', userSeq[i] ? 'opacity-100' : 'opacity-30')}>
+                  {userSeq[i] ?? '⚪'}
+                </span>
+              ))}
+        </div>
+      </div>
+
+      {phase === 'input' && (
+        <div className="grid grid-cols-4 gap-3">
+          {patterns.map((p) => (
+            <button
+              key={p}
+              onClick={() => pick(p)}
+              className="aspect-square rounded-2xl bg-white text-5xl shadow-card transition-all hover:scale-110 active:scale-95"
+            >
+              {p}
+            </button>
           ))}
         </div>
-      ) : (
-        <div className="flex justify-center gap-4">
-          {patterns.map((p) => (
-            <button key={p} onClick={() => pick(p)} className="text-4xl hover:scale-110 transition-transform">{p}</button>
-          ))}
+      )}
+
+      {phase === 'wrong' && (
+        <div className="rounded-3xl bg-red-50 p-6 text-center">
+          <p className="text-3xl">😬</p>
+          <p className="mt-2 font-bold text-red-700">Reached round {round}</p>
+          <Button className="mt-4" variant="gold" onClick={startGame}>
+            <RotateCw className="h-3.5 w-3.5" /> Try Again
+          </Button>
         </div>
       )}
     </div>
@@ -433,28 +622,80 @@ export function SJTGame({ onScore }: { onScore: (score: number) => void }) {
   const lang = i18n.language
   const [index, setIndex] = useState(0)
   const [total, setTotal] = useState(0)
-
-  const answer = (score: number) => {
-    const newTotal = total + score
-    setTotal(newTotal)
-    if (index >= sjtQuestions.length - 1) {
-      onScore(Math.round((newTotal / (sjtQuestions.length * 10)) * 100))
-    } else {
-      setIndex(index + 1)
-    }
-  }
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null)
+  const [showFeedback, setShowFeedback] = useState(false)
 
   const q = sjtQuestions[index]
+
+  const select = (oi: number, score: number) => {
+    if (showFeedback) return
+    setSelectedIdx(oi)
+    setShowFeedback(true)
+    setTimeout(() => {
+      const newTotal = total + score
+      setTotal(newTotal)
+      setSelectedIdx(null)
+      setShowFeedback(false)
+      if (index >= sjtQuestions.length - 1) {
+        onScore(Math.round((newTotal / (sjtQuestions.length * 10)) * 100))
+      } else {
+        setIndex(index + 1)
+      }
+    }, 1400)
+  }
+
+  const bestScore = Math.max(...q.options.map((o) => o.score))
+
   return (
-    <Card>
-      <p className="mb-4 font-medium">{lang === 'uz' ? q.scenario.uz : q.scenario.en}</p>
-      <div className="space-y-2">
-        {q.options.map((opt: (typeof q.options)[number], i: number) => (
-          <Button key={i} variant="outline" className="w-full justify-start text-left" onClick={() => answer(opt.score)}>
-            {lang === 'uz' ? opt.text.uz : opt.text.en}
-          </Button>
-        ))}
+    <div className="space-y-4">
+      <div className="flex items-center justify-between rounded-2xl bg-etihad-light p-3 text-sm">
+        <span>Question <b>{index + 1}/{sjtQuestions.length}</b></span>
+        <span className="rounded-full bg-etihad-gold/15 px-2 py-0.5 text-xs font-bold text-yellow-800">
+          Score: {total}
+        </span>
       </div>
-    </Card>
+
+      <div className="rounded-3xl bg-gradient-to-br from-emerald-700 to-emerald-900 p-5 text-white">
+        <p className="text-eyebrow !text-emerald-200">Situation</p>
+        <p className="mt-2 text-base font-semibold leading-relaxed">{lang === 'uz' ? q.scenario.uz : q.scenario.en}</p>
+      </div>
+
+      <div className="space-y-2">
+        {q.options.map((opt, i) => {
+          const isSelected = selectedIdx === i
+          const isBest = opt.score === bestScore
+          const showRight = showFeedback && isBest
+          const showWrong = showFeedback && isSelected && !isBest
+
+          return (
+            <button
+              key={i}
+              disabled={showFeedback}
+              onClick={() => select(i, opt.score)}
+              className={cn(
+                'group w-full rounded-2xl border p-3 text-left text-sm transition-all',
+                !showFeedback && 'border-gray-200 hover:border-etihad-blue hover:bg-etihad-blue/5',
+                showRight && 'border-emerald-400 bg-emerald-50',
+                showWrong && 'border-red-400 bg-red-50',
+                showFeedback && !showRight && !showWrong && 'border-gray-200 opacity-50',
+              )}
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-medium text-etihad-dark">{lang === 'uz' ? opt.text.uz : opt.text.en}</span>
+                {showFeedback && (
+                  <span className={cn(
+                    'rounded-full px-2 py-0.5 text-xs font-bold',
+                    isBest && 'bg-emerald-100 text-emerald-700',
+                    !isBest && isSelected && 'bg-red-100 text-red-700',
+                  )}>
+                    {opt.score}/10
+                  </span>
+                )}
+              </div>
+            </button>
+          )
+        })}
+      </div>
+    </div>
   )
 }
