@@ -1,49 +1,50 @@
 import { Link } from 'react-router-dom'
 import { AtSign, Globe, MessageSquare, Send } from 'lucide-react'
-
-const columns = [
-  {
-    title: 'Shop',
-    links: [
-      { to: '/shop?gender=men', label: 'Men' },
-      { to: '/shop?gender=women', label: 'Women' },
-      { to: '/shop?gender=kids', label: 'Kids' },
-      { to: '/shop?collection=Running', label: 'Running' },
-      { to: '/shop?collection=Training', label: 'Training' },
-      { to: '/shop?collection=Lifestyle', label: 'Lifestyle' },
-    ],
-  },
-  {
-    title: 'Studio',
-    links: [
-      { to: '/customize/p1', label: 'Design your own' },
-      { to: '/customize/p2', label: 'Velocity Pro' },
-      { to: '/customize/p3', label: 'Court Classic' },
-      { to: '/customize/p9', label: 'Sky Rider' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { to: '/support', label: 'Help Center' },
-      { to: '/support/faq', label: 'FAQ' },
-      { to: '/support/track', label: 'Track Order' },
-      { to: '/support/contact', label: 'Contact us' },
-      { to: '/support', label: 'Returns & Exchanges' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { to: '/about', label: 'About PULSE' },
-      { to: '/about', label: 'Sustainability' },
-      { to: '/about', label: 'Careers' },
-      { to: '/about', label: 'Press' },
-    ],
-  },
-]
+import { useTranslation } from 'react-i18next'
 
 export function Footer() {
+  const { t } = useTranslation()
+
+  const columns = [
+    {
+      title: t('footer.shop'),
+      links: [
+        { to: '/shop?gender=men', label: t('nav.men') },
+        { to: '/shop?gender=women', label: t('nav.women') },
+        { to: '/shop?gender=kids', label: t('nav.kids') },
+        { to: '/shop?collection=Running', label: t('nav.running') },
+        { to: '/shop?collection=Lifestyle', label: 'Lifestyle' },
+      ],
+    },
+    {
+      title: t('footer.studio'),
+      links: [
+        { to: '/customize/p1', label: t('home.studioCTA') },
+        { to: '/customize/p2', label: 'Velocity Pro' },
+        { to: '/customize/p3', label: 'Court Classic' },
+        { to: '/customize/p9', label: 'Sky Rider' },
+      ],
+    },
+    {
+      title: t('footer.support'),
+      links: [
+        { to: '/support', label: t('nav.support') },
+        { to: '/support/faq', label: t('support.faq') },
+        { to: '/support/track', label: t('support.trackOrder') },
+        { to: '/support/contact', label: t('support.contactUs') },
+      ],
+    },
+    {
+      title: t('footer.company'),
+      links: [
+        { to: '/about', label: t('about.eyebrow') },
+        { to: '/about', label: 'Sustainability' },
+        { to: '/about', label: 'Careers' },
+        { to: '/about', label: 'Press' },
+      ],
+    },
+  ]
+
   return (
     <footer className="bg-black text-white">
       <div className="mx-auto max-w-7xl px-4 py-14">
@@ -54,7 +55,7 @@ export function Footer() {
               <span className="h-2 w-2 rounded-full bg-red-500 mb-3" />
             </div>
             <p className="text-sm text-neutral-400 max-w-xs leading-relaxed">
-              Move beyond limits. Designed for the next generation of athletes — runners, lifters, skaters, dreamers.
+              {t('footer.tagline')}
             </p>
 
             <form
@@ -62,11 +63,11 @@ export function Footer() {
               onSubmit={(e) => e.preventDefault()}
             >
               <input
-                placeholder="Email for drops & 10% off"
+                placeholder={t('footer.newsletter')}
                 className="flex-1 rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm placeholder:text-neutral-500 focus:outline-none focus:border-white"
               />
               <button className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-black hover:bg-neutral-200 transition-colors">
-                Join
+                {t('footer.join')}
               </button>
             </form>
           </div>

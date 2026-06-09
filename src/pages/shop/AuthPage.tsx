@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowRight, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useShopStore } from '@/stores/shop-store'
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export function AuthPage({ mode }: Props) {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const login = useShopStore((s) => s.login)
   const [email, setEmail] = useState('')
@@ -59,22 +61,19 @@ export function AuthPage({ mode }: Props) {
           </div>
 
           <h2 className="text-3xl font-black tracking-tighter">
-            {mode === 'login' ? 'Welcome back' : 'Create account'}
+            {mode === 'login' ? t('auth.welcomeBack') : t('auth.createAccount')}
           </h2>
-          <p className="text-sm text-neutral-500">
-            {mode === 'login' ? "Pick up where you left off." : 'Start your PULSE membership.'}
-          </p>
 
           {mode === 'signup' && (
-            <Field label="First name" value={firstName} onChange={setFirstName} />
+            <Field label={t('auth.firstName')} value={firstName} onChange={setFirstName} />
           )}
-          <Field label="Email" value={email} onChange={setEmail} type="email" />
-          <Field label="Password" value={password} onChange={setPassword} type="password" />
+          <Field label={t('checkout.email')} value={email} onChange={setEmail} type="email" />
+          <Field label={t('auth.password')} value={password} onChange={setPassword} type="password" />
 
           {mode === 'login' && (
             <div className="text-right">
               <Link to="#" className="text-xs font-semibold text-neutral-500 hover:text-black underline">
-                Forgot password?
+                {t('auth.forgotPassword')}
               </Link>
             </div>
           )}
@@ -83,15 +82,15 @@ export function AuthPage({ mode }: Props) {
             type="submit"
             className="w-full rounded-full bg-black text-white py-4 font-bold flex items-center justify-center gap-2 pulse-btn"
           >
-            {mode === 'login' ? 'Sign in' : 'Create account'}
+            {mode === 'login' ? t('auth.signIn') : t('auth.createAccount')}
             <ArrowRight className="h-4 w-4" />
           </button>
 
           <div className="text-center text-sm text-neutral-500">
             {mode === 'login' ? (
-              <>New to PULSE? <Link to="/signup" className="font-bold text-black underline">Create one</Link></>
+              <>{t('auth.newToPulse')} <Link to="/signup" className="font-bold text-black underline">{t('auth.createOne')}</Link></>
             ) : (
-              <>Already a member? <Link to="/login" className="font-bold text-black underline">Sign in</Link></>
+              <>{t('auth.alreadyMember')} <Link to="/login" className="font-bold text-black underline">{t('auth.signIn')}</Link></>
             )}
           </div>
 

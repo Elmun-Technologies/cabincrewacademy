@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { User, Package, Heart, MapPin, Settings, LogOut, ChevronRight, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useShopStore } from '@/stores/shop-store'
 
 export function AccountPage() {
+  const { t } = useTranslation()
   const user = useShopStore((s) => s.user)
   const orders = useShopStore((s) => s.orders)
   const wishlist = useShopStore((s) => s.wishlist)
@@ -14,14 +16,14 @@ export function AccountPage() {
         <div className="mx-auto h-20 w-20 rounded-full bg-neutral-100 flex items-center justify-center mb-6">
           <User className="h-10 w-10 text-neutral-400" />
         </div>
-        <h1 className="text-3xl font-black tracking-tighter">Sign in to PULSE</h1>
-        <p className="mt-2 text-neutral-500">Save orders, addresses, and earn PulsePoints rewards.</p>
+        <h1 className="text-3xl font-black tracking-tighter">{t('account.signIn')}</h1>
+        <p className="mt-2 text-neutral-500">{t('account.signInDesc')}</p>
         <div className="mt-6 flex justify-center gap-3">
           <Link to="/login" className="rounded-full bg-black text-white px-6 py-3 text-sm font-bold">
-            Sign in
+            {t('auth.signIn')}
           </Link>
           <Link to="/signup" className="rounded-full border border-neutral-300 px-6 py-3 text-sm font-bold">
-            Create account
+            {t('account.createAccount')}
           </Link>
         </div>
       </div>
@@ -29,10 +31,10 @@ export function AccountPage() {
   }
 
   const menu = [
-    { to: '/account/orders', icon: <Package className="h-5 w-5" />, title: 'Orders', count: orders.length },
-    { to: '/account/wishlist', icon: <Heart className="h-5 w-5" />, title: 'Favorites', count: wishlist.length },
-    { to: '/account/addresses', icon: <MapPin className="h-5 w-5" />, title: 'Addresses' },
-    { to: '/account/settings', icon: <Settings className="h-5 w-5" />, title: 'Settings' },
+    { to: '/account/orders', icon: <Package className="h-5 w-5" />, title: t('account.orders'), count: orders.length },
+    { to: '/account/wishlist', icon: <Heart className="h-5 w-5" />, title: t('account.favorites'), count: wishlist.length },
+    { to: '/account/addresses', icon: <MapPin className="h-5 w-5" />, title: t('account.addresses') },
+    { to: '/account/settings', icon: <Settings className="h-5 w-5" />, title: t('account.settings') },
   ]
 
   return (
@@ -44,9 +46,9 @@ export function AccountPage() {
             {user.firstName[0]?.toUpperCase()}
           </div>
           <div>
-            <div className="text-xs uppercase tracking-[0.18em] opacity-70">Welcome back</div>
+            <div className="text-xs uppercase tracking-[0.18em] opacity-70">{t('account.welcomeBack')}</div>
             <h1 className="text-3xl font-black tracking-tighter">{user.firstName}</h1>
-            <div className="text-xs opacity-70 mt-0.5">Member since {new Date(user.memberSince).toLocaleDateString()}</div>
+            <div className="text-xs opacity-70 mt-0.5">{t('account.memberSince')} {new Date(user.memberSince).toLocaleDateString()}</div>
           </div>
           <div className="ml-auto hidden sm:block">
             <div className="rounded-full bg-amber-400 text-black px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
@@ -83,7 +85,7 @@ export function AccountPage() {
         className="mt-6 text-sm font-semibold text-neutral-500 hover:text-black inline-flex items-center gap-2"
       >
         <LogOut className="h-4 w-4" />
-        Sign out
+        {t('account.signOut')}
       </button>
     </div>
   )

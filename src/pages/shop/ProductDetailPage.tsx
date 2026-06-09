@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Heart, ShoppingBag, Truck, RotateCcw, Shield, Star, Sparkles, ChevronRight, Share2 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { getProduct, products } from '@/data/products'
 import { useShopStore } from '@/stores/shop-store'
 import { ProductCard } from '@/components/shop/ProductCard'
 import { cn } from '@/lib/utils'
 
 export function ProductDetailPage() {
+  const { t } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
   const product = slug ? getProduct(slug) : undefined
@@ -38,7 +40,7 @@ export function ProductDetailPage() {
 
   const handleAddToCart = () => {
     if (!size) {
-      useShopStore.getState().toast('Please select a size', 'error')
+      useShopStore.getState().toast(t('product.selectSize'), 'error')
       return
     }
     if (!color) return
@@ -161,7 +163,7 @@ export function ProductDetailPage() {
           {/* Color */}
           <div>
             <div className="flex justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-[0.16em]">Color</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em]">{t('common.color')}</span>
               <span className="text-xs text-neutral-500">{color?.name}</span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -183,8 +185,8 @@ export function ProductDetailPage() {
           {/* Size */}
           <div>
             <div className="flex justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-[0.16em]">Size</span>
-              <button className="text-xs text-neutral-500 underline">Size guide</button>
+              <span className="text-xs font-bold uppercase tracking-[0.16em]">{t('common.size')}</span>
+              <button className="text-xs text-neutral-500 underline">{t('product.sizeGuide')}</button>
             </div>
             <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
               {product.sizes.map((s) => (
@@ -211,13 +213,13 @@ export function ProductDetailPage() {
               className="w-full rounded-full bg-black text-white py-4 font-bold flex items-center justify-center gap-2 hover:scale-[1.01] transition-transform pulse-btn"
             >
               <ShoppingBag className="h-4 w-4" />
-              Add to Bag
+              {t('common.addToCart')}
             </button>
             <button
               onClick={handleBuyNow}
               className="w-full rounded-full border-2 border-black py-4 font-bold hover:bg-neutral-100 transition-colors"
             >
-              Buy Now
+              {t('common.buyNow')}
             </button>
             {product.customizable && (
               <Link
@@ -225,22 +227,22 @@ export function ProductDetailPage() {
                 className="w-full rounded-full bg-gradient-to-r from-red-500 to-amber-500 text-white py-4 font-bold flex items-center justify-center gap-2 hover:scale-[1.01] transition-transform"
               >
                 <Sparkles className="h-4 w-4" />
-                Customize in Studio
+                {t('product.customize')}
               </Link>
             )}
           </div>
 
           {/* Perks */}
           <div className="grid grid-cols-3 gap-3 pt-2">
-            <Perk icon={<Truck className="h-4 w-4" />} title="Free shipping" subtitle="Over $75" />
-            <Perk icon={<RotateCcw className="h-4 w-4" />} title="60-day returns" subtitle="No questions" />
-            <Perk icon={<Shield className="h-4 w-4" />} title="2-yr warranty" subtitle="Quality promise" />
+            <Perk icon={<Truck className="h-4 w-4" />} title={t('product.freeShipping')} subtitle={t('product.freeShippingDesc')} />
+            <Perk icon={<RotateCcw className="h-4 w-4" />} title={t('product.returns')} subtitle={t('product.returnsDesc')} />
+            <Perk icon={<Shield className="h-4 w-4" />} title={t('product.warranty')} subtitle={t('product.warrantyDesc')} />
           </div>
 
           {/* Accordion sections */}
           <div className="border-t border-neutral-200 pt-2">
             <Section
-              title="Product details"
+              title={t('product.details')}
               open={openTab === 'details'}
               onToggle={() => setOpenTab(openTab === 'details' ? null : 'details')}
             >
@@ -254,11 +256,11 @@ export function ProductDetailPage() {
                 ))}
               </ul>
               <div className="mt-3 text-xs text-neutral-500">
-                <strong>Materials:</strong> {product.materials}
+                <strong>{t('product.materials')}:</strong> {product.materials}
               </div>
             </Section>
             <Section
-              title="Shipping & returns"
+              title={t('product.shippingReturns')}
               open={openTab === 'shipping'}
               onToggle={() => setOpenTab(openTab === 'shipping' ? null : 'shipping')}
             >
@@ -268,7 +270,7 @@ export function ProductDetailPage() {
               </p>
             </Section>
             <Section
-              title="Reviews"
+              title={t('product.reviewsSection')}
               open={openTab === 'reviews'}
               onToggle={() => setOpenTab(openTab === 'reviews' ? null : 'reviews')}
             >
@@ -306,7 +308,7 @@ export function ProductDetailPage() {
 
       {relatedProducts.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-16">
-          <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-6">You may also love</h2>
+          <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-6">{t('product.alsoLove')}</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
             {relatedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />

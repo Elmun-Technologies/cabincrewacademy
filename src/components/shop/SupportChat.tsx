@@ -1,16 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { MessageCircle, X, Send, Sparkles, Headset } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useShopStore } from '@/stores/shop-store'
 import { cn } from '@/lib/utils'
 import type { SupportMessage } from '@/types/shop'
-
-const quickReplies = [
-  'Track my order',
-  'Sizing help',
-  'Return an item',
-  'About PULSE Studio',
-]
 
 function botReply(userText: string): string {
   const t = userText.toLowerCase()
@@ -39,19 +33,27 @@ function botReply(userText: string): string {
 }
 
 export function SupportChat() {
+  const { t } = useTranslation()
   const open = useShopStore((s) => s.chatOpen)
   const setOpen = useShopStore((s) => s.setChatOpen)
   const [messages, setMessages] = useState<SupportMessage[]>([
     {
       id: '1',
       from: 'agent',
-      text: "Hi! I'm Ava, your PULSE assistant. How can I help today?",
+      text: t('chat.welcome'),
       timestamp: new Date().toISOString(),
     },
   ])
   const [input, setInput] = useState('')
   const [typing, setTyping] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
+
+  const quickReplies = [
+    t('chat.quick1'),
+    t('chat.quick2'),
+    t('chat.quick3'),
+    t('chat.quick4'),
+  ]
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -93,7 +95,7 @@ export function SupportChat() {
           aria-label="Open support chat"
         >
           <MessageCircle className="h-5 w-5" />
-          <span className="font-semibold text-sm hidden sm:inline">Need help?</span>
+          <span className="font-semibold text-sm hidden sm:inline">{t('chat.openLabel')}</span>
         </button>
       )}
 
@@ -108,8 +110,8 @@ export function SupportChat() {
                 <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-emerald-400 border-2 border-black" />
               </div>
               <div>
-                <div className="text-sm font-bold leading-tight">Ava · PULSE Care</div>
-                <div className="text-[10px] text-neutral-400 uppercase tracking-wider">Online now</div>
+                <div className="text-sm font-bold leading-tight">{t('chat.title')}</div>
+                <div className="text-[10px] text-neutral-400 uppercase tracking-wider">{t('chat.online')}</div>
               </div>
             </div>
             <button onClick={() => setOpen(false)} className="p-1.5 hover:bg-white/10 rounded-full" aria-label="Close">
@@ -170,7 +172,7 @@ export function SupportChat() {
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your message…"
+              placeholder={t('chat.placeholder')}
               className="flex-1 rounded-full bg-neutral-100 px-4 py-2.5 text-sm focus:outline-none focus:bg-white focus:ring-1 focus:ring-black"
             />
             <button
@@ -188,7 +190,7 @@ export function SupportChat() {
             className="bg-neutral-100 border-t border-neutral-200 px-4 py-2.5 text-xs font-semibold text-center hover:bg-neutral-200 flex items-center justify-center gap-2"
           >
             <Headset className="h-3.5 w-3.5" />
-            Visit full Support Center
+            {t('chat.fullCenter')}
           </Link>
         </div>
       )}

@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { Minus, Plus, X, ShoppingBag, ArrowRight, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useShopStore } from '@/stores/shop-store'
 
 export function CartPage() {
+  const { t } = useTranslation()
   const cart = useShopStore((s) => s.cart)
   const updateQty = useShopStore((s) => s.updateCartQty)
   const remove = useShopStore((s) => s.removeFromCart)
@@ -18,13 +20,13 @@ export function CartPage() {
         <div className="mx-auto h-24 w-24 rounded-full bg-neutral-100 flex items-center justify-center mb-6">
           <ShoppingBag className="h-10 w-10 text-neutral-400" />
         </div>
-        <h1 className="text-3xl font-black tracking-tighter">Your bag is empty</h1>
-        <p className="mt-2 text-neutral-500">Time to find your next favorite.</p>
+        <h1 className="text-3xl font-black tracking-tighter">{t('cart.empty')}</h1>
+        <p className="mt-2 text-neutral-500">{t('cart.emptyDesc')}</p>
         <Link
           to="/shop"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3.5 text-sm font-bold"
         >
-          Shop the latest
+          {t('cart.shopLatest')}
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
@@ -36,7 +38,7 @@ export function CartPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
-      <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-6">Your Bag</h1>
+      <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-6">{t('cart.title')}</h1>
 
       {freeShipRemaining > 0 ? (
         <div className="mb-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
@@ -50,7 +52,7 @@ export function CartPage() {
       ) : (
         <div className="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 flex items-center gap-3">
           <Sparkles className="h-5 w-5 text-emerald-600" />
-          <p className="text-sm font-semibold text-emerald-700">You qualified for free shipping</p>
+          <p className="text-sm font-semibold text-emerald-700">{t('cart.qualifiedFree')}</p>
         </div>
       )}
 
@@ -123,25 +125,25 @@ export function CartPage() {
         {/* Summary */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-2xl border border-neutral-200 bg-white p-6 space-y-4">
-            <h2 className="text-xl font-black tracking-tighter">Order summary</h2>
+            <h2 className="text-xl font-black tracking-tighter">{t('cart.orderSummary')}</h2>
 
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-neutral-600">Subtotal</span>
+                <span className="text-neutral-600">{t('common.subtotal')}</span>
                 <span>${subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-neutral-600">Shipping</span>
-                <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                <span className="text-neutral-600">{t('common.shipping')}</span>
+                <span>{shipping === 0 ? t('common.free') : `$${shipping.toFixed(2)}`}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-neutral-600">Estimated tax</span>
+                <span className="text-neutral-600">{t('cart.estimatedTax')}</span>
                 <span>${tax.toFixed(2)}</span>
               </div>
             </div>
 
             <div className="border-t border-neutral-200 pt-3 flex justify-between font-bold text-lg">
-              <span>Total</span>
+              <span>{t('common.total')}</span>
               <span>${total.toFixed(2)}</span>
             </div>
 
@@ -149,11 +151,11 @@ export function CartPage() {
               to="/checkout"
               className="block w-full rounded-full bg-black text-white py-4 text-center font-bold hover:scale-[1.01] transition-transform pulse-btn"
             >
-              Checkout
+              {t('cart.checkout')}
             </Link>
 
             <Link to="/shop" className="block text-center text-sm font-semibold underline">
-              Continue shopping
+              {t('cart.continueShopping')}
             </Link>
 
             <div className="border-t border-neutral-200 pt-4 text-xs text-neutral-500 space-y-1">

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { ChevronDown, SlidersHorizontal, X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { ProductCard } from '@/components/shop/ProductCard'
 import { products, collections } from '@/data/products'
 import { cn } from '@/lib/utils'
@@ -8,6 +9,7 @@ import { cn } from '@/lib/utils'
 type SortKey = 'featured' | 'priceAsc' | 'priceDesc' | 'newest' | 'rating'
 
 export function ShopPage() {
+  const { t } = useTranslation()
   const [params, setParams] = useSearchParams()
   const [filterOpen, setFilterOpen] = useState(false)
   const [sort, setSort] = useState<SortKey>('featured')
@@ -61,45 +63,45 @@ export function ShopPage() {
   const FilterPanel = () => (
     <div className="space-y-6">
       <FilterGroup
-        title="Gender"
+        title={t('shop.gender')}
         current={gender}
         onChange={(v) => updateParam('gender', v)}
         options={[
-          { value: '', label: 'All' },
-          { value: 'men', label: 'Men' },
-          { value: 'women', label: 'Women' },
-          { value: 'kids', label: 'Kids' },
+          { value: '', label: t('shop.all') },
+          { value: 'men', label: t('nav.men') },
+          { value: 'women', label: t('nav.women') },
+          { value: 'kids', label: t('nav.kids') },
         ]}
       />
       <FilterGroup
-        title="Category"
+        title={t('shop.category')}
         current={category}
         onChange={(v) => updateParam('category', v)}
         options={[
-          { value: '', label: 'All' },
-          { value: 'sneakers', label: 'Sneakers' },
-          { value: 'apparel', label: 'Apparel' },
-          { value: 'accessories', label: 'Accessories' },
+          { value: '', label: t('shop.all') },
+          { value: 'sneakers', label: t('home.sneakers') },
+          { value: 'apparel', label: t('home.apparel') },
+          { value: 'accessories', label: t('home.accessories') },
         ]}
       />
       <FilterGroup
-        title="Collection"
+        title={t('shop.collection')}
         current={collection}
         onChange={(v) => updateParam('collection', v)}
         options={[
-          { value: '', label: 'All' },
+          { value: '', label: t('shop.all') },
           ...collections.map((c) => ({ value: c, label: c })),
         ]}
       />
       <FilterGroup
-        title="Highlights"
+        title={t('shop.highlights')}
         current={badge}
         onChange={(v) => updateParam('badge', v)}
         options={[
-          { value: '', label: 'All' },
+          { value: '', label: t('shop.all') },
           { value: 'new', label: 'New' },
           { value: 'bestseller', label: 'Bestseller' },
-          { value: 'sale', label: 'On Sale' },
+          { value: 'sale', label: 'Sale' },
           { value: 'limited', label: 'Limited' },
         ]}
       />
@@ -113,9 +115,9 @@ export function ShopPage() {
           <Link to="/" className="hover:text-black">Home</Link> / <span className="text-black">Shop</span>
         </nav>
         <h1 className="text-4xl md:text-5xl font-black tracking-tighter">
-          {q ? `Results for "${q}"` : category || collection || gender || 'All products'}
+          {q ? `${t('shop.results')} "${q}"` : category || collection || gender || t('shop.title')}
         </h1>
-        <p className="text-neutral-500 mt-2">{filtered.length} products</p>
+        <p className="text-neutral-500 mt-2">{filtered.length} {t('shop.products')}</p>
       </div>
 
       {activeFilters.length > 0 && (
@@ -134,7 +136,7 @@ export function ShopPage() {
             onClick={() => setParams(new URLSearchParams())}
             className="text-xs font-semibold text-neutral-500 hover:text-black px-2"
           >
-            Clear all
+            {t('shop.clearAll')}
           </button>
         </div>
       )}
@@ -145,9 +147,9 @@ export function ShopPage() {
           className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-semibold hover:border-black md:hidden"
         >
           <SlidersHorizontal className="h-4 w-4" />
-          Filter
+          {t('shop.filter')}
         </button>
-        <div className="hidden md:block text-sm text-neutral-500">{filtered.length} products</div>
+        <div className="hidden md:block text-sm text-neutral-500">{filtered.length} {t('shop.products')}</div>
 
         <div className="relative">
           <select
@@ -155,11 +157,11 @@ export function ShopPage() {
             onChange={(e) => setSort(e.target.value as SortKey)}
             className="appearance-none rounded-full border border-neutral-200 bg-white pl-4 pr-9 py-2 text-sm font-semibold focus:outline-none focus:border-black cursor-pointer"
           >
-            <option value="featured">Featured</option>
-            <option value="newest">Newest</option>
-            <option value="priceAsc">Price: Low to High</option>
-            <option value="priceDesc">Price: High to Low</option>
-            <option value="rating">Top rated</option>
+            <option value="featured">{t('shop.sortFeatured')}</option>
+            <option value="newest">{t('shop.sortNewest')}</option>
+            <option value="priceAsc">{t('shop.sortPriceAsc')}</option>
+            <option value="priceDesc">{t('shop.sortPriceDesc')}</option>
+            <option value="rating">{t('shop.sortRating')}</option>
           </select>
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none" />
         </div>
@@ -173,12 +175,12 @@ export function ShopPage() {
         <div>
           {filtered.length === 0 ? (
             <div className="text-center py-20">
-              <div className="text-2xl font-bold">No products match these filters</div>
+              <div className="text-2xl font-bold">{t('shop.noResults')}</div>
               <button
                 onClick={() => setParams(new URLSearchParams())}
                 className="mt-4 inline-flex rounded-full bg-black text-white px-6 py-3 text-sm font-bold"
               >
-                Clear filters
+                {t('shop.clearFilters')}
               </button>
             </div>
           ) : (
@@ -199,7 +201,7 @@ export function ShopPage() {
           <div className="absolute inset-0 bg-black/40" onClick={() => setFilterOpen(false)} />
           <aside className="absolute right-0 top-0 h-full w-[88%] max-w-sm bg-white overflow-y-auto p-5 slide-in-left">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xl font-black tracking-tighter">Filters</h2>
+              <h2 className="text-xl font-black tracking-tighter">{t('shop.filters')}</h2>
               <button onClick={() => setFilterOpen(false)} className="p-1.5">
                 <X className="h-5 w-5" />
               </button>
@@ -209,7 +211,7 @@ export function ShopPage() {
               onClick={() => setFilterOpen(false)}
               className="mt-8 w-full rounded-full bg-black text-white py-3.5 text-sm font-bold"
             >
-              Show {filtered.length} products
+              {filtered.length} {t('shop.products')}
             </button>
           </aside>
         </div>
