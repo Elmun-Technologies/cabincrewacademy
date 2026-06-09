@@ -1,5 +1,4 @@
 import { Component, type ReactNode } from 'react'
-import { Button } from '@/components/ui/button'
 
 interface Props {
   children: ReactNode
@@ -19,18 +18,19 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.error) {
       return (
-        <div className="flex min-h-svh flex-col items-center justify-center gap-4 bg-etihad-light p-6 text-center">
-          <span className="text-4xl">✈️</span>
-          <h1 className="text-xl font-bold text-etihad-dark">Xatolik yuz berdi</h1>
-          <p className="max-w-md text-sm text-gray-600">{this.state.error.message}</p>
-          <Button
+        <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-white p-6 text-center">
+          <span className="text-5xl font-black tracking-tighter">PULSE</span>
+          <h1 className="text-2xl font-bold">Something went wrong</h1>
+          <p className="max-w-md text-sm text-neutral-500">{this.state.error.message}</p>
+          <button
             onClick={() => {
-              localStorage.removeItem('cabin-crew-academy-v2')
+              localStorage.removeItem('pulse-shop-v1')
               window.location.href = '/'
             }}
+            className="rounded-full bg-black text-white px-6 py-3 text-sm font-bold"
           >
-            Qayta boshlash
-          </Button>
+            Restart
+          </button>
         </div>
       )
     }
