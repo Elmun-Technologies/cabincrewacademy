@@ -5,7 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import path from 'path'
 
 export default defineConfig({
-  base: process.env.BASE_PATH ?? '/',
+  base: process.env.BASE_PATH ?? './',
   plugins: [
     react(),
     tailwindcss(),
@@ -13,10 +13,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Cabin Crew Academy',
-        short_name: 'CCA',
-        description: 'Etihad Airways cabin crew preparation platform',
-        theme_color: '#002F6C',
+        name: 'PULSE',
+        short_name: 'PULSE',
+        description: 'PULSE — Move beyond limits. Sneakers, apparel, customizer.',
+        theme_color: '#0a0a0a',
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
