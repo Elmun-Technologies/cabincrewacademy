@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { ShopLayout } from '@/components/shop/ShopLayout'
 
@@ -21,8 +21,6 @@ import { SettingsPage } from '@/pages/shop/SettingsPage'
 import { AuthPage } from '@/pages/shop/AuthPage'
 import { AboutPage } from '@/pages/shop/AboutPage'
 import { NotFoundPage } from '@/pages/shop/NotFoundPage'
-
-const BASENAME = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 function Layout({ children }: { children: React.ReactNode }) {
   return <ShopLayout>{children}</ShopLayout>
@@ -65,9 +63,9 @@ function AppRoutes() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter basename={BASENAME || undefined}>
+      <HashRouter>
         <AppRoutes />
-      </BrowserRouter>
+      </HashRouter>
     </ErrorBoundary>
   )
 }
